@@ -5,7 +5,7 @@
 
 A structure representing a console for displaying text.
 
-#### Fields
+#### Properties
 * `content` : a string containing the current contents of the console.
 
 #### Methods
@@ -34,11 +34,18 @@ The Inventory class represents a player's inventory in the game. It contains inf
 * `canCollect(itemID: number) -> boolean` : Returns true if the player can collect the item with the specified item ID, false otherwise.
 * `hasItems(itemIDs: table) -> boolean` : Returns true if the player has item.
 
+#### Example Usage
+```lua
+for i, item in pairs(GetBot():getInventory().items) do
+  print(GetInfo(item.id).name)
+end
+```
+
 ## InventoryItem
 
 A structure representing an item in an inventory.
 
-#### Fields
+#### Properties
 * `id`: an integer representing the ID of the item.
 * `count`: an integer representing the number of this item in the inventory.
 * `isActive`: a boolean indicating whether or not the item is currently weared.
