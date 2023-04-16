@@ -255,7 +255,7 @@ if item_info then
 end
 ```
 
-## UpdatePacket
+## GameUpdatePacket
 
 Represents a packet that updates the state of an object in the game.
 
