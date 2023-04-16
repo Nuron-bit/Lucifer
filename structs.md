@@ -125,3 +125,87 @@ The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 - `desty` : Destination y of npc. (Aka next position)
 - `npcVar` : NPC variable.
 - `unk` : Unk Value.
+
+## Tile
+
+The Tile class represents a single tile in the game world.
+
+#### Properties
+* `foreground` (`fg`) : The foreground tile ID.
+* `background` (`bg`) : The background tile ID.
+* `x` : The x-coordinate of the tile.
+* `y` : The y-coordinate of the tile.
+* `parent` : The parent object of the tile.
+* `flags` : The flags set for the tile.
+
+#### Methods
+* `hasExtra() -> boolean` : Returns true if the tile has an extra data field, false otherwise.
+* `getExtra() -> TileExtra*` : Returns a pointer to the extra data field for the tile. Returns nil if the tile has no extra data.
+
+#### Example Usage
+```lua
+tile = GetBot():getWorld():getTile(23, 30)
+if tile:hasExtra() then
+  local extra = tile:getExtra()
+  print("Label: ", extra.label)
+end
+```
+
+## PathNode
+
+The PathNode class represents a node in a pathfinding algorithm.
+
+#### Properties
+* `x` : The x-coordinate of the node.
+* `y` : The y-coordinate of the node.
+
+#### Example Usage
+```lua
+bot = GetBot()
+nodes = bot:getPath(23, 10)
+
+for i, node in pairs(nodes) do
+  print(string.format("Node(%i, %i)", node.x, node.y))
+end
+```
+
+## Growscan
+
+The Growscan class represents the result of a "growscan" operation, which is used to scan the environment around a player and identify nearby tiles and objects.
+
+#### Properties
+* `tiles` : A table containing the IDs of the tiles that were found in the growscan, along with the number of times each tile was found.
+* `objects` : A table containing the IDs of the objects that were found in the growscan, along with the number of times each object was found.
+
+#### Example Usage
+```lua
+local gs = GetBot():getWorld().growscan
+for id, count in pairs(gs.tiles) do
+    print("Found " .. count .. " tiles with name " ..GetInfo(id).name)
+end
+```
+
+## World
+The World class represents a game world. It contains information about the size of the world, tiles, objects, players, and NPCs.
+
+#### Properties
+* `name` : The name of the world.
+* `x` : The width of the world.
+* `y` : The height of the world.
+* `tile_count` : The total number of tiles in the world.
+* `growscan` : A Growscan object representing the world's growscan.
+* `tiles` : A table containing all the Tiles in the world.
+* `objects` : A table containing all the NetObjects in the world.
+* `players` : A table containing all the Players in the world.
+* `npcs` : A table containing all the Npcs in the world.
+* `public` : A boolean value indicating whether the world is public or not.
+* `version` : The version of the world.
+#### Methods
+* `getTile(x: number, y: number) -> Tile` : Returns the Tile object at the specified x,y position.
+* `getObject(x: number) -> NetObject` : Returns the NetObject object at the specified objectid(oid).
+* `getPlayer(netID: number | string) -> Player` : Returns the NetAvatar object with the specified player netID or name. It returns nil if not found.
+* `getNPC(npcID: number) -> NPC` : Returns the NetNPC object with the specified NPC ID. It returns nil if not found.
+* `getLocal() -> Player` : Returns the NetAvatar object representing the local player.
+* `getTileParent(tile: Tile) -> Tile` : Returns the Tile that the specified Tile is attached to.
+* `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
+* `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world, false otherwise.
