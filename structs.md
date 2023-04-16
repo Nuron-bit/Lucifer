@@ -4,9 +4,66 @@
 A structure representing a bot.
 
 #### Properties
+* `status` : The status of the player.
+* `captcha_status` : The status of the captcha.
+* `gem_count` : The number of gems the bot has.
+* `pearl_count` : The number of pearls the bot has.
+* `voucher_count` : The number of vouchers the bot has.
+* `level` : The level of the bot.
+* `is_account_secured` : A read-only property that returns whether the bot account is secured.
+* `auto_reconnect` : A boolean property that enables/disables auto-reconnect.
+* `auto_access` : A boolean property that enables/disables auto-access.
+* `auto_leave_on_admin` : A boolean property that enables/disables auto-leave when an admin is in the world.
+* `auto_leave_on_mod` : A boolean property that enables/disables auto-leave when a mod is in the world.
+* `auto_ban` : A boolean property that enables/disables auto-ban.
+* `auto_tutorial` : A boolean property that enables/disables auto-tutorial.
+* `auto_collect` : A boolean property that enables/disables auto-collect.
+* `ignore_gems` : A boolean property that enables/disables ignoring gems.
+* `ignore_essences` : A boolean property that enables/disables ignoring essences.
+* `object_collect_delay` : A number property that sets the delay for collecting spawned objects.
+* `collect_interval` : A number property that sets the interval for collecting.
+* `collect_range` : A number property that sets the range for collecting.
 
 #### Methods
-
+* `getWorld() -> World` : Returns bot world.
+* `getInventory() -> Inventory` : Returns bot inventory.
+* `getConsole() -> Console` : Returns bot console.
+* `getLog() -> Log` : Returns bot log.
+* `getLogin() -> Login` : Returns bot login.
+* `connect() -> boolean` : Makes bot connect to the game server.
+* `disconnect()` : Makes bot disconnect from the game server.
+* `sendRaw(packet: GameUpdatePacket)` : Sends Raw packet if its valid & connected & no captcha.
+* `sendPacket(type: number, packet: string)` : Sends packet if its valid & connected & no capctcha.
+* `warp(name: string) | warp(name: string, id: string)` : Warps to specific world with id (optional).
+* `say(text: string)` : Sends a message to world, if bot is in a world.
+* `use(item_id: number)` : Uses the item if its consumable & in inventory.
+* `wear(item_id: number)` : Wears an item if bot isn't wearing.
+* `unwear(item_id: number)` : Unwears an item if bot is wearing.
+* `drop(item_id: number, item_count: number)` : Drops the item if item's id & count is valid.
+* `trash(item_id: number, item_count: number)` : Trashes the item if item's id & count is valid.
+* `buy(store_id: string)` : Buys item from store with its store_id.
+* `leaveWorld()` : Leaves from world if bot is in a world.
+* `setBubble(bubble: BubbleType)` : Sets Bot bubble status, you can check enum for more information.
+* `place(x: number, y: number, item: number)` : Places block if its valid.
+* `hit(x: number, y: number)` : Hit to tile if range safe & valid position.
+* `wrench(x: number, y: number)` : Wrench to tile if range safe & valid position.
+* `wrenchPlayer(netID: number)` : Wrenchs to a player if player exists.
+* `moveTo(difference_x: number, difference_y: number)` : Moves to tile with x and y difference. Ex: moveTo(1, 0) makes u move right.
+* `moveTile(tilex: number, tiley: number)` : Moves to the tile if range safe & valid position.
+* `moveLeft()` : Moves bot to left if its valid position
+* `moveRight()` : Moves bot to right if its valid position
+* `moveUp()` : Moves bot to up if its valid position
+* `moveDown()` : Moves bot to down if its valid position
+* `enter()` : Enters the door, if there is door.
+* `respawn()` : Respawns the bot.
+* `getPath(x: number, y: number) -> table` : Returns table of PathNodes if path found. Returns empty table if not found.
+* `findPath(x: number, y: number)` : Finds tile path and moves to destination.
+* `findWorldPath(x: number, y: number)` : Finds world path and moves to destination.
+* `collectObject(oid: number, range: number)` : Collects the object if bot is in range.
+* `collect(range: number)` : Collect all objects by range.
+* `isInWorld() -> bool` : Returns true if bot is in a world.
+* `getPing() -> number` : Returns the ping value of the bot.
+        
 ## Console
 
 A structure representing a console for displaying text.
