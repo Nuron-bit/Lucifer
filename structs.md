@@ -312,8 +312,8 @@ A Vector3 is a container that holds x, y and z positions.
 Represents a variant type that can store different types of data.
 
 #### Methods
-- `getType()` : Returns the type of the stored data.
-- `print()` : Prints the stored data to the console.
+- `getType() -> VariantType` : Returns the type of the stored data.
+- `print()` : Dumps the stored data to a string.
 - `set(string)` : Sets the stored data to a string.
 - `set(int)` : Sets the stored data to an integer.
 - `set(float)` : Sets the stored data to a floating-point number.
@@ -322,18 +322,18 @@ Represents a variant type that can store different types of data.
 - `set(vector2)` : Sets the stored data to a 2D vector.
 - `set(vector3)` : Sets the stored data to a 3D vector.
 - `reset()` : Resets the stored data to an empty state.
-- `getString()` : Returns the stored data as a string.
-- `getInt()` : Returns the stored data as an integer.
-- `getFloat()` : Returns the stored data as a floating-point number.
-- `getVector2()` : Returns the stored data as a 2D vector.
-- `getVector3()` : Returns the stored data as a 3D vector.
+- `getString() -> string` : Returns the stored data as a string.
+- `getInt() -> number` : Returns the stored data as an integer.
+- `getFloat() -> float` : Returns the stored data as a floating-point number.
+- `getVector2() -> Vector2` : Returns the stored data as a 2D vector.
+- `getVector3() -> Vector3` : Returns the stored data as a 3D vector.
 
 ## variantlist
 Represents a list of variant objects.
 
 #### Methods
-- `get(index)` : Returns the variant_t object at the specified index.
-- `print()` : Prints the entire list of variant_t objects to the console.
+- `get(index) -> variant` : Returns the variant object at the specified index.
+- `print() -> string` : Dumps the entire list to a string.
 
 ## RTParam
 
