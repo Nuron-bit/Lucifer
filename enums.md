@@ -71,7 +71,7 @@ An enumeration representing the different HTTP methods.
 
 #### Example Usage
 ```lua
--- Make an HTTP request using the POST method
+-- Make an HTTP request using the GET method
 
 local client = HttpClient.new()
 
