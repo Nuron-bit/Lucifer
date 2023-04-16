@@ -1,8 +1,6 @@
-# LUCIFER V1 - API DOCUMENTATION
+# LUCIFER V1 - API DOCUMENTATION [ENUMS]
 
-## Enums
-
-### BotStatus
+## BotStatus
 
 An enumeration representing the different statuses a bot can have.
 
@@ -36,7 +34,7 @@ if status == BotStatus.online then
 end
 ```
 
-### CaptchaStatus
+## CaptchaStatus
 
 An enumeration representing the different status codes for a captcha.
 
@@ -58,7 +56,7 @@ if captchaStatus == CaptchaStatus.solved then
 end
 ```
 
-### Method
+## Method
 
 An enumeration representing the different HTTP methods.
 
@@ -80,4 +78,30 @@ client.url = "https://www.google.com"
 
 response = client:request()
 print(response.body)
+```
+
+## Callback
+
+An enumeration representing the different HTTP methods.
+
+#### Values
+* `OnVariantList` : Variant List Callback.
+* `OnGameMessage` : Game Message Callback.
+* `OnGenericText` : Generic Text Callback.
+* `OnUpdatePacket` : Game Update Packet Callback.
+* `OnTrackPacket` : Track Packet Callback.
+* `OnRender` : ImGui Render Callback.
+* `OnDiscord` : Discord Callback.
+
+#### Example Usage
+```lua
+local bot = GetBot()
+
+function onVariantList(var)
+end
+
+bot:AddCallback(Callback.OnVariantList, "onVariantList")
+```
+## PlayerState
+## TileFlag
 ```
