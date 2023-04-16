@@ -46,9 +46,9 @@ end
 A structure representing an item in an inventory.
 
 #### Properties
-* `id`: an integer representing the ID of the item.
-* `count`: an integer representing the number of this item in the inventory.
-* `isActive`: a boolean indicating whether or not the item is currently weared.
+* `id` : an integer representing the ID of the item.
+* `count` : an integer representing the number of this item in the inventory.
+* `isActive` : a boolean indicating whether or not the item is currently weared.
 
 #### Example Usage
 ```lua
