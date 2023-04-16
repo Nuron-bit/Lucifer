@@ -363,3 +363,28 @@ RTVAR represents a runtime variable that can have multiple parameters.
 - `modify(key: string, parameters: table, hasSeperator: boolean)` : Modifies rtparam with the given key.
 - `parse(str: string)` : Parses a string and updates the parameter list accordingly.
 - `size() -> number` : Returns the number of rtparams in the RTVAR.
+
+## Embed Class
+The Embed class represents an embed object that can be used to display rich content in a Discord message. It has the following properties and methods:
+
+#### Properties
+- `use` : Boolean value indicating whether the embed should be used or not.
+- `color` : Integer value representing the color of the embed.
+- `title` : String value representing the title of the embed.
+- `type` : String value representing the type of the embed.
+- `description` : String value representing the description of the embed.
+- `url` : String value representing the URL associated with the embed.
+- `thumbnail` : String value representing the URL of the thumbnail image
+- `image` : The image url of the embed.
+- `footer` : Object representing the footer of the embed. It has the following properties:
+  - `text` : String value representing the text of the footer.
+  - `icon_url` : String value representing the URL of the icon associated with the footer.
+- `author` : Object representing the author of the embed. It has the following properties:
+  - `name` : String value representing the name of the author.
+  - `url` : String value representing the URL associated with the author.
+  - `icon_url` : String value representing the URL of the icon associated with the author.
+## Methods
+- `addField` : Adds a new field to the embed. It takes three arguments:
+  - `name` : String value representing the name of the field.
+  - `value` : String value representing the value of the field.
+  - `is_inline` : Boolean value indicating whether the field should be displayed inline or not.
