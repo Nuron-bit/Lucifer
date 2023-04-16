@@ -128,6 +128,7 @@ if vlist:get(4):getType() == VariantType.string then
 end
 ```
 
+## BubbleType
 ## PlayerState
 ## TileType
 ## TileFlag
