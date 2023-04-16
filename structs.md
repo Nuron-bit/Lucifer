@@ -209,3 +209,15 @@ The World class represents a game world. It contains information about the size 
 * `getTileParent(tile: Tile) -> Tile` : Returns the Tile that the specified Tile is attached to.
 * `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
 * `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world.
+#### Example Usage
+```lua
+local world = GetBot():getWorld()
+for i, tile in pairs(world.tiles) do
+  print(tile.fg)
+end
+
+object = world:getObject(1)
+if object then
+  print(GetInfo(objet.id).name)
+end
+```
