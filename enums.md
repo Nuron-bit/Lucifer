@@ -102,6 +102,32 @@ end
 
 bot:AddCallback(Callback.OnVariantList, "onVariantList")
 ```
+
+## VariantType
+
+An enumeration representing the variant type of a variant.
+
+#### Values
+* `float` : type float.
+* `int32` : type int32.
+* `uint32` : type uint32.
+* `string` : type string.
+* `unused` : type unused.
+* `vector2` : type vector2.
+* `vector3` : type vector3.
+* `component` : type component.
+* `entity` : type entity.
+
+#### Example Usage
+```lua
+vlist = variantlist.new()
+
+vlist:get(4):set("nuron")
+if vlist:get(4):getType() == VariantType.string then
+    print("Successfully modified variant[4] value.")
+end
+```
+
 ## PlayerState
 ## TileType
 ## TileFlag
