@@ -221,3 +221,74 @@ if object then
   print(GetInfo(objet.id).name)
 end
 ```
+
+## ItemInfo
+The ItemInfo class represents information about an item in the game. It contains information about the item's id, category, kind, collision, rarity, name, texture, and more.
+
+#### Properties
+* `id` : The unique identifier for the item.
+* `editable_type` : The type of the item for the purpose of the item.
+* `item_category` : The category of the item.
+* `action_type` : The type of the item's action.
+* `hit_sound_type` : The type of the item's hit sound.
+* `item_kind` : The kind of the item.
+* `collision_type` : The type of the item's collision.
+* `clothing_type` : The type of clothing for the item, if its clothing.
+* `rarity` : The rarity of the item.
+* `flags1` : Unknown.
+* `flags2` : Unknown.
+* `seed_color` : The color of the seed base.
+* `seed_overlay_color` : The color of the seed overlay.
+* `grow_time` : The grow time of the item, if it is a plant.
+* `drop_chance` : The drop chance of the item.
+* `name` : The name of the item.
+* `texture` : The texture file for the item.
+* `texture_hash` : The hash of the texture file for the item.
+* `texture_x` : The x-coordinate of the texture for the item. (Sprite Position)
+* `texture_y` : The y-coordinate of the texture for the item. (Sprite Position)
+* `null_Item` : True if item name contains null.
+#### Example Usage
+```lua
+local item_info = GetInfo(9)
+if item_info then
+  print("Item name: " .. item_info.name)
+end
+```
+
+## UpdatePacket
+
+Represents a packet that updates the state of an object in the game.
+
+- `type` : The type of packet.
+- `object_type` : The type of object change type.
+- `count1` : A count variable used in certain types of packets.
+- `count2` : A count variable used in certain types of packets.
+- `netid` : The network ID of the object/player... being updated.
+- `item` : The item being updated.
+- `flags` : A set of flags used in certain types of packets.
+- `float_var` : A floating point variable used in certain types of update packets.
+- `int_data` : An integer variable used in certain types of update packets.
+- `vec_x` | `pos_x` : The x position of a component being updated.
+- `vec_y` | `pos_y` : The y position of a component being updated.
+- `vec2_x` | `pos2_x` : The velocity x of a component being updated.
+- `vec2_y` | `pos2_y` : The velocity y of a component being updated.
+- `particle_rotation` : The rotation of a particle being updated.
+- `int_x` : An integer variable used in certain types of update packets. (Ex Tile Position)
+- `int_y` : An integer variable used in certain types of update packets. (Ex Tile Position)
+
+#### Example Usage
+```lua
+bot = GetBot()
+
+if bot:GetLocal() then
+  packet = GameUpdatePacket.new()
+  packet.type = 0
+  packet.int_x = -1
+  packet.int_y = -1
+  packet.pos_x = bot:GetLocal().x
+  packet.pos_y = bot:GetLocal().y
+  packet.flags = 0x0
+  
+  bot:SendRaw(packet)
+end
+```
