@@ -100,7 +100,7 @@ local bot = GetBot()
 function onVariantList(var)
 end
 
-bot:AddCallback(Callback.OnVariantList, "onVariantList")
+bot:addCallback(Callback.OnVariantList, "onVariantList")
 ```
 
 ## VariantType
