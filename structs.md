@@ -32,7 +32,7 @@ The Inventory class represents a player's inventory in the game. It contains inf
 * `getItems() -> table` : Returns a table containing all the InventoryItem objects in the inventory.
 * `findItem(itemID: number | string) -> number` : Returns the InventoryItem with the specified item ID. It returns nil if not found.
 * `canCollect(itemID: number) -> boolean` : Returns true if the player can collect the item with the specified item ID, false otherwise.
-* `hasItems(itemIDs: table) -> boolean` : Returns true if the player has item.
+* `hasItems() -> boolean` : Returns true if the player has item.
 
 #### Example Usage
 ```lua
