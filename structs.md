@@ -11,13 +11,6 @@ A structure representing a console for displaying text.
 #### Methods
 * `append(text: string)` : appends the specified text to the console's content.
 
-#### Example Usage
-```lua
-local console = GetBot():getConsole()
-console:append("Hello, world!")
-
-print(console.content)
-```
 ## Inventory
 
 The Inventory class represents a player's inventory in the game. It contains information about the items the player has, including the item ID, count, and whether the item is active.
@@ -34,13 +27,6 @@ The Inventory class represents a player's inventory in the game. It contains inf
 * `canCollect(itemID: number) -> boolean` : Returns true if the player can collect the item with the specified item ID, false otherwise.
 * `hasItems() -> boolean` : Returns true if the player has item.
 
-#### Example Usage
-```lua
-for i, item in pairs(GetBot():getInventory().items) do
-  print(GetInfo(item.id).name)
-end
-```
-
 ## InventoryItem
 
 A structure representing an item in an inventory.
@@ -49,15 +35,6 @@ A structure representing an item in an inventory.
 * `id` : an integer representing the ID of the item.
 * `count` : an integer representing the number of this item in the inventory.
 * `isActive` : a boolean indicating whether or not the item is currently weared.
-
-#### Example Usage
-```lua
-local item = GetBot():getInventory():getItem(18)
-
-print(item.id)
-print(item.count)
-print(item.isActive)
-```
 
 ## Clothes
 
@@ -142,15 +119,6 @@ The Tile class represents a single tile in the game world.
 * `hasExtra() -> boolean` : Returns true if the tile has an extra data field, false otherwise.
 * `getExtra() -> TileExtra*` : Returns a pointer to the extra data field for the tile. Returns nil if the tile has no extra data.
 
-#### Example Usage
-```lua
-tile = GetBot():getWorld():getTile(23, 30)
-if tile:hasExtra() then
-  local extra = tile:getExtra()
-  print("Label: ", extra.label)
-end
-```
-
 ## PathNode
 
 The PathNode class represents a node in a pathfinding algorithm.
@@ -159,16 +127,6 @@ The PathNode class represents a node in a pathfinding algorithm.
 * `x` : The x-coordinate of the node.
 * `y` : The y-coordinate of the node.
 
-#### Example Usage
-```lua
-bot = GetBot()
-nodes = bot:getPath(23, 10)
-
-for i, node in pairs(nodes) do
-  print(string.format("Node(%i, %i)", node.x, node.y))
-end
-```
-
 ## Growscan
 
 The Growscan class represents the result of a "growscan" operation, which is used to scan the environment around a player and identify nearby tiles and objects.
@@ -176,14 +134,6 @@ The Growscan class represents the result of a "growscan" operation, which is use
 #### Properties
 * `tiles` : A table containing the IDs of the tiles that were found in the growscan, along with the number of times each tile was found.
 * `objects` : A table containing the IDs of the objects that were found in the growscan, along with the number of times each object was found.
-
-#### Example Usage
-```lua
-local gs = GetBot():getWorld().growscan
-for id, count in pairs(gs.tiles) do
-    print("Found " .. count .. " tiles with name " ..GetInfo(id).name)
-end
-```
 
 ## World
 The World class represents a game world. It contains information about the size of the world, tiles, objects, players, and NPCs.
@@ -209,18 +159,6 @@ The World class represents a game world. It contains information about the size 
 * `getTileParent(tile: Tile) -> Tile` : Returns the Tile that the specified Tile is attached to.
 * `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
 * `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world.
-#### Example Usage
-```lua
-local world = GetBot():getWorld()
-for i, tile in pairs(world.tiles) do
-  print(tile.fg)
-end
-
-object = world:getObject(1)
-if object then
-  print(GetInfo(objet.id).name)
-end
-```
 
 ## ItemInfo
 The ItemInfo class represents information about an item in the game. It contains information about the item's id, category, kind, collision, rarity, name, texture, and more.
@@ -247,13 +185,6 @@ The ItemInfo class represents information about an item in the game. It contains
 * `texture_x` : The x-coordinate of the texture for the item. (Sprite Position)
 * `texture_y` : The y-coordinate of the texture for the item. (Sprite Position)
 * `null_Item` : True if item name contains null.
-#### Example Usage
-```lua
-local item_info = GetInfo(9)
-if item_info then
-  print("Item name: " .. item_info.name)
-end
-```
 
 ## GameUpdatePacket
 
@@ -275,23 +206,6 @@ Represents a packet that updates the state of an object in the game.
 - `particle_rotation` : The rotation of a particle being updated.
 - `int_x` : An integer variable used in certain types of update packets. (Ex Tile Position)
 - `int_y` : An integer variable used in certain types of update packets. (Ex Tile Position)
-
-#### Example Usage
-```lua
-bot = GetBot()
-
-if bot:GetLocal() then
-  packet = GameUpdatePacket.new()
-  packet.type = 0
-  packet.int_x = -1
-  packet.int_y = -1
-  packet.pos_x = bot:GetLocal().x
-  packet.pos_y = bot:GetLocal().y
-  packet.flags = 0x0
-  
-  bot:SendRaw(packet)
-end
-```
 
 ## Vector2
 A Vector2 is a container that holds x and y positions.
