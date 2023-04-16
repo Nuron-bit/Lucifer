@@ -82,7 +82,7 @@ print(response.body)
 
 ## Callback
 
-An enumeration representing the different HTTP methods.
+An enumeration representing the different types of callbacks.
 
 #### Values
 * `OnVariantList` : Variant List Callback.
