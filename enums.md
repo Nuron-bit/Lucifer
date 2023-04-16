@@ -103,5 +103,6 @@ end
 bot:AddCallback(Callback.OnVariantList, "onVariantList")
 ```
 ## PlayerState
+## TileType
 ## TileFlag
-```
+## NpcType
