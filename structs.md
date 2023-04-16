@@ -208,4 +208,4 @@ The World class represents a game world. It contains information about the size 
 * `getLocal() -> Player` : Returns the NetAvatar object representing the local player.
 * `getTileParent(tile: Tile) -> Tile` : Returns the Tile that the specified Tile is attached to.
 * `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
-* `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world, false otherwise.
+* `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world.
