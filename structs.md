@@ -1,5 +1,11 @@
 # LUCIFER V1 - API DOCUMENTATION [STRUCTURES]
 
+## Bot
+A structure representing a bot.
+
+#### Properties
+
+#### Methods
 
 ## Console
 
@@ -102,6 +108,10 @@ The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 - `desty` : Destination y of npc. (Aka next position)
 - `npcVar` : NPC variable.
 - `unk` : Unk Value.
+
+## TileExtra
+
+#### Properties
 
 ## Tile
 
@@ -298,7 +308,7 @@ The Embed class represents an embed object that can be used to display rich cont
   - `url` : String value representing the URL associated with the author.
   - `icon_url` : String value representing the URL of the icon associated with the author.
 ## Methods
-- `addField` : Adds a new field to the embed. It takes three arguments:
+- `addField(name: string, value: string, inline: boolean)` : Adds a new field to the embed. It takes three arguments:
   - `name` : String value representing the name of the field.
   - `value` : String value representing the value of the field.
   - `is_inline` : Boolean value indicating whether the field should be displayed inline or not.
@@ -315,30 +325,30 @@ A discord webhook class where you can send webhooks.
 - `embed2` : variable representing the second embed of the webhook message.
 
 #### Methods
-- `MakeContent()` : string : function that returns the combined content of the message and its embeds. (Json format)
-- `Send()` : function that sends the webhook message.
-- `Edit(message_id: number)`  : function that edits the webhook message with message_id.
+- `makeContent() -> string` : Function that returns the combined content of the message and its embeds. (Json format)
+- `send()` : Function that sends the webhook message.
+- `edit(message_id: number)`  : Function that edits the webhook message with message_id.
 
 ## HttpResult
 HttpResult is a container where it stores http response datas.
 
 #### Properties
-- `body` : a read-only property that returns the body of the HTTP response as a string.
-- `error` : a read-only property that returns an integer error code in case of a network error. If there was no error, this property returns 0.
-- `status` : a read-only property that returns the HTTP status code as an integer.
+- `body` : The body of the HTTP response as a string.
+- `error` : An integer error code in case of a network error. If there was no error, this property returns 0.
+- `status` : The HTTP status code as an integer.
 
 #### Methods
-- `getError` : a function that returns a string error message in case of a network error.
+- `getError()` : A function that returns a string error message in case of a network error.
 
 ## HttpClient
 HttpClient represents a class that uses curl library to send http/s requests.
 
 #### Properties
-- `content` : a string that represents the HTTP request body.
-- `method` : a string that represents the HTTP method.
-- `headers` : a Lua table that represents the HTTP request headers. (Ex: headers["User-Agent"] = "Lucifer")
-- `url` : a string that represents the target URL.
+- `content` : A string that represents the HTTP request body.
+- `method` : A string that represents the HTTP method.
+- `headers` : A Lua table that represents the HTTP request headers. (Ex: headers["User-Agent"] = "Lucifer")
+- `url` : A string that represents the target URL.
 
 #### Methods
-- `setMethod` : a function that sets the HTTP method.
-- `request` : a function that sends the HTTP request and returns an HttpResult object.
+- `setMethod(method: Method)` : A function that sets the HTTP method.
+- `request() -> httpresult` : A function that sends the HTTP request and returns an HttpResult object.
