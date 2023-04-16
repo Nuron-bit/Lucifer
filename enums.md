@@ -66,6 +66,7 @@ An enumeration representing the different HTTP methods.
 * `put` : HTTP PUT method.
 * `patch` : HTTP PATCH method.
 * `delete` : HTTP DELETE method.
+* `head` : HTTP HEAD method.
 
 #### Example Usage
 ```lua
