@@ -63,7 +63,8 @@ A structure representing a bot.
 * `collect(range: number)` : Collect all objects by range.
 * `isInWorld() -> bool` : Returns true if bot is in a world.
 * `getPing() -> number` : Returns the ping value of the bot.
-        
+* `addCallback(type: CallbackType, function: string) -> number` : Returns the ping value of the bot.   
+
 ## Console or Log
 
 A structure representing a console for displaying text.
