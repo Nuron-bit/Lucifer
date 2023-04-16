@@ -64,15 +64,21 @@ A structure representing a bot.
 * `isInWorld() -> bool` : Returns true if bot is in a world.
 * `getPing() -> number` : Returns the ping value of the bot.
         
-## Console
+## Console or Log
 
 A structure representing a console for displaying text.
 
 #### Properties
-* `content` : a string containing the current contents of the console.
+* `content` : a string containing the current contents of the console/log.
 
 #### Methods
-* `append(text: string)` : appends the specified text to the console's content.
+* `append(text: string)` : appends the specified text to the console/log's content.
+
+## Login
+A structure that holds login details like growid, password, mac, klv or so.
+
+#### Properties
+Soon.
 
 ## Inventory
 
@@ -169,6 +175,7 @@ The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 ## TileExtra
 
 #### Properties
+Soon
 
 ## Tile
 
