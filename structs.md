@@ -106,22 +106,22 @@ The Player class represents an in-game player and contains various properties to
 The object class represents an object in a world.
 
 #### Properties
-- `id` : read-only property that returns the `NetObject` ID.
-- `x` : read-only property that returns the x-coordinate of the `NetObject`.
-- `y` : read-only property that returns the y-coordinate of the `NetObject`.
-- `count` : read-only property that returns the count of the `NetObject`.
-- `flags` : read-only property that returns the flags of the `NetObject`.
-- `oid` : read-only property that returns the `NetObject` oid.
+- `id` : The item ID of object.
+- `x` : The x-coordinate of object.
+- `y` : The y-coordinate of object.
+- `count` : The item count of object.
+- `flags` : The object flags.
+- `oid` : The object id.
 
 ### NPC
 The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 
 #### Properties
-- `npcType` : read-only property that returns the type of the `NPC`.
-- `npcID` : read-only property that returns the ID of the `NPC`.
-- `x` : read-only property that returns the x-coordinate of the `NPC`.
-- `y` : read-only property that returns the y-coordinate of the `NPC`.
-- `destx` : read-only property that returns the x-coordinate of the destination of the `NPC`.
-- `desty` : read-only property that returns the y-coordinate of the destination of the `NPC`.
-- `npcVar` : read-only property that returns the `npcVar` of the `NPC`.
-- `unk` : read-only property that returns the `unk` of the `NPC`.
+- `npcType` : The type of the npc.
+- `npcID` : The world index of the npc.
+- `x` : Current x-coordinate of npc.
+- `y` : Current y-coordinate of npc.
+- `destx` : Destination x of npc. (Aka next position)
+- `desty` : Destination y of npc. (Aka next position)
+- `npcVar` : NPC variable.
+- `unk` : Unk Value.
