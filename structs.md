@@ -292,3 +292,74 @@ if bot:GetLocal() then
   bot:SendRaw(packet)
 end
 ```
+
+## Vector2
+A Vector2 is a container that holds x and y positions.
+
+#### Properties
+- `x` : x position.
+- `y` : y position. 
+
+## Vector3
+A Vector3 is a container that holds x, y and z positions.
+
+#### Properties
+- `x` : x position.
+- `y` : y position. 
+- `z` : z position. 
+
+## variant
+Represents a variant type that can store different types of data.
+
+#### Methods
+- `getType()` : Returns the type of the stored data.
+- `print()` : Prints the stored data to the console.
+- `set(string)` : Sets the stored data to a string.
+- `set(int)` : Sets the stored data to an integer.
+- `set(float)` : Sets the stored data to a floating-point number.
+- `set(float, float)` : Sets the stored data to a 2D vector.
+- `set(float, float, float)` : Sets the stored data to a 3D vector.
+- `set(vector2)` : Sets the stored data to a 2D vector.
+- `set(vector3)` : Sets the stored data to a 3D vector.
+- `reset()` : Resets the stored data to an empty state.
+- `getString()` : Returns the stored data as a string.
+- `getInt()` : Returns the stored data as an integer.
+- `getFloat()` : Returns the stored data as a floating-point number.
+- `getVector2()` : Returns the stored data as a 2D vector.
+- `getVector3()` : Returns the stored data as a 3D vector.
+
+## variantlist
+Represents a list of variant objects.
+
+#### Methods
+- `get(index)` : Returns the variant_t object at the specified index.
+- `print()` : Prints the entire list of variant_t objects to the console.
+
+## RTParam
+
+### Properties
+- `parameters` : The list of parameters (table)
+- `key` : The key (string)
+- `has_seperator` : Whether or not the parameter has a separator at the end (boolean)
+
+## RTVAR
+RTVAR represents a runtime variable that can have multiple parameters.
+
+#### Methods
+- `RTVAR.new()` : Constructs a new RTVAR object with an empty parameter list.
+- `RTVAR.new(string)` : Constructs a new RTVAR object with the given string as its parameter list.
+- `params() -> string` : Returns the parameter list as a string.
+- `append(key: string, value: string, separator: bool)` : Appends a new parameter with the given key and value to the parameter list. If separator is true, a separator character is added at the end of the parameter list.
+- `append(key: string, value: number, separator: bool)` : Appends a new parameter with the given key and numeric value to the parameter list. If separator is true, a separator character is added at the end of the parameter list.
+- `contains(key: string) -> bool` : Returns true if the parameter list contains a parameter with the given key, false otherwise.
+- `dump() -> string` : Dumps the RTVAR to a string.
+- `erase(key: string)` : Removes the parameter with the given key from the parameter list.
+- `find(key: string) -> number` : Returns the RTPARAM with the given key, nil if its not found.
+- `get(key: string) -> string` : Returns the value of the parameter with the given key as a string.
+- `getInt(key: string) -> number` : Returns the value of the parameter with the given key as an integer.
+- `getLong(key: string) -> number` : Returns the value of the parameter with the given key as a long integer.
+- `getParam(key: string) -> rtparam` : Returns the rtparam with given key.
+- `getParams(key: string) -> table` : Returns the table of rtparams with given key.
+- `modify(key: string, parameters: table, hasSeperator: boolean)` : Modifies rtparam with the given key.
+- `parse(str: string)` : Parses a string and updates the parameter list accordingly.
+- `size() -> number` : Returns the number of rtparams in the RTVAR.
