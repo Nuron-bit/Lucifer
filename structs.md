@@ -102,7 +102,7 @@ The Player class represents an in-game player and contains various properties to
 * `roleicon` : The role icon of the player.
 * `clothes` : An instance of the Clothes class representing the clothes of the player. See Clothes class documentation for more details.
 
-### NetObject
+## NetObject
 The object class represents an object in a world.
 
 #### Properties
@@ -113,7 +113,7 @@ The object class represents an object in a world.
 - `flags` : The object flags.
 - `oid` : The object id.
 
-### NPC
+## NPC
 The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 
 #### Properties
