@@ -278,7 +278,7 @@ RTVAR represents a runtime variable that can have multiple parameters.
 - `parse(str: string)` : Parses a string and updates the parameter list accordingly.
 - `size() -> number` : Returns the number of rtparams in the RTVAR.
 
-## Embed Class
+## Embed
 The Embed class represents an embed object that can be used to display rich content in a Discord message. It has the following properties and methods:
 
 #### Properties
@@ -302,3 +302,43 @@ The Embed class represents an embed object that can be used to display rich cont
   - `name` : String value representing the name of the field.
   - `value` : String value representing the value of the field.
   - `is_inline` : Boolean value indicating whether the field should be displayed inline or not.
+
+## Webhook class
+A discord webhook class where you can send webhooks.
+
+#### Properties
+- `url` : string : string variable representing the webhook url.
+- `content` : string : string variable representing the content of the message to be sent.
+- `username` : string : string variable representing the username of the webhook.
+- `avatar_url` : string : string variable representing the avatar url of the webhook.
+- `embed1` : variable representing the first embed of the webhook message.
+- `embed2` : variable representing the second embed of the webhook message.
+
+#### Methods
+- `MakeContent()` : string : function that returns the combined content of the message and its embeds. (Json format)
+- `Send()` : function that sends the webhook message.
+- `Edit(message_id: number)`  : function that edits the webhook message with message_id.
+
+## HttpResult
+HttpResult is a container where it stores http response datas.
+
+#### Properties
+- `body` : a read-only property that returns the body of the HTTP response as a string.
+- `error` : a read-only property that returns an integer error code in case of a network error. If there was no error, this property returns 0.
+- `status` : a read-only property that returns the HTTP status code as an integer.
+
+#### Methods
+- `getError` : a function that returns a string error message in case of a network error.
+
+## HttpClient
+HttpClient represents a class that uses curl library to send http/s requests.
+
+#### Properties
+- `content` : a string that represents the HTTP request body.
+- `method` : a string that represents the HTTP method.
+- `headers` : a Lua table that represents the HTTP request headers. (Ex: headers["User-Agent"] = "Lucifer")
+- `url` : a string that represents the target URL.
+
+#### Methods
+- `setMethod` : a function that sets the HTTP method.
+- `request` : a function that sends the HTTP request and returns an HttpResult object.
