@@ -38,7 +38,7 @@ function OnRender()
       
       ImGui.Text("Inventory Items")
       for i, item in pairs(GetBot():getInventory().items) do
-        ImGui.Bullet(GetInfo(item.id).name)
+        ImGui.Text(GetInfo(item.id).name)
       end
     end
     ImGui.EndTabBar()
