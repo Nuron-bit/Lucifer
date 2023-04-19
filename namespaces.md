@@ -1,4 +1,4 @@
-# LUCIFER V1 - API DOCUMENTATION [NAMESPACE]
+# LUCIFER V1 - API DOCUMENTATION [NAMESPACES]
 
 ## ImGui
 ImGui is a bloat-free graphical user interface library for C++. Wrapped to lua by Nuron.
@@ -26,8 +26,6 @@ ImGui is a bloat-free graphical user interface library for C++. Wrapped to lua b
 geiger_enabled = false
 geiger_speed = 1
 
-inventoryitems = {}
-
 function OnRender()
   if ImGui.BeginTabBar("Opinions") then
     if ImGui.BeginTabItem("Geiger Mod") then
@@ -39,8 +37,8 @@ function OnRender()
       end
       
       ImGui.Text("Inventory Items")
-      for i, item in pairs(inventory_items) do
-        ImGui.Bullet(GetInfo(item).name)
+      for i, item in pairs(GetBot():getInventory().items) do
+        ImGui.Bullet(GetInfo(item.id).name)
       end
     end
     ImGui.EndTabBar()
