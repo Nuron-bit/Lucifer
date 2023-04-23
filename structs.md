@@ -63,6 +63,7 @@ A structure representing a bot.
 * `collect(range: number)` : Collect all objects by range.
 * `isInWorld() -> bool` : Returns true if bot is in a world.
 * `getPing() -> number` : Returns the ping value of the bot.
+* `getSignal() -> Signal` : Returns the latest geiger signal.
 * `addCallback(type: CallbackType, function: string) -> number` : Returns the ping value of the bot.   
 
 ## Console or Log
@@ -80,6 +81,14 @@ A structure that holds login details like growid, password, mac, klv or so.
 
 #### Properties
 Soon.
+
+## Signal
+A container that have details about latest geiger area.
+
+#### Properties
+* `x` : Tile position x of signal.
+* `y` : Tile position y of signal.
+* `type` : GeigerArea type.
 
 ## Inventory
 
