@@ -129,6 +129,29 @@ if vlist:get(4):getType() == VariantType.string then
 end
 ```
 
+## GeigerArea
+
+An enumeration representing the type of geiger area.
+
+#### Values
+* `null` : No Area
+* `red` : Red Area.
+* `yellow` : Yellow Area.
+* `green` : Green Area.
+* `rapid` : Rapid Green Area.
+* `prize` : Prize Area.
+
+#### Example Usage
+```lua
+bot = GetBot()
+
+signal = bot:getSignal()
+
+if signal.type ~= GeigerArea.null then
+    print(string.format("Latest geiger area found on (%i:%i)", signal.x, signal.y))
+end
+```
+
 ## BubbleType
 ## PlayerState
 ## TileType
