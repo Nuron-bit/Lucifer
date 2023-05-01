@@ -23,6 +23,9 @@ A structure representing a bot.
 * `object_collect_delay` : A number property that sets the delay for collecting spawned objects.
 * `collect_interval` : A number property that sets the interval for collecting.
 * `collect_range` : A number property that sets the range for collecting.
+* `auto_geiger` : AutoGeiger Instance.
+* `auto_message` : AutoMessage Instance.
+* `auto_spam` : AutoSpam Instance.
 
 #### Methods
 * `getWorld() -> World` : Returns bot world.
@@ -102,7 +105,7 @@ The Inventory class represents a player's inventory in the game. It contains inf
 #### Methods
 * `getItem(itemID: number | string) -> InventoryItem` : Returns the InventoryItem with the specified item ID. It returns nil if not found.
 * `getItems() -> table` : Returns a table containing all the InventoryItem objects in the inventory.
-* `findItem(itemID: number | string) -> number` : Returns the InventoryItem with the specified item ID. It returns nil if not found.
+* `findItem(itemID: number | string) or getItemCount(itemID: number | string) -> number` : Returns the InventoryItem count with the specified item ID. It returns 0 if not found.
 * `canCollect(itemID: number) -> boolean` : Returns true if the player can collect the item with the specified item ID, false otherwise.
 * `hasItems() -> boolean` : Returns true if the player has item.
 
