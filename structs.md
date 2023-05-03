@@ -67,7 +67,6 @@ A structure representing a bot.
 * `isInWorld() -> bool` : Returns true if bot is in a world.
 * `getPing() -> number` : Returns the ping value of the bot.
 * `getSignal() -> Signal` : Returns the latest geiger signal.
-* `addCallback(type: CallbackType, function: string) -> number` : Returns the ping value of the bot.   
 
 ## Console or Log
 
