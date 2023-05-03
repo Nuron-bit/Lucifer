@@ -8,3 +8,6 @@
 * `removeBot(name: string)` : Removes bot if it exists.
 * `getBot(name: string) -> Bot` : Returns the target bot with its name. If not found then it returns nil.
 * `getBot() -> Bot` : Returns the parent bot that executor executed in.
+* `addEvent(Event: type, lua_function: function)` : Adds a event.
+* `removeEvent(Event: type)` : Removes the events by specific type.
+* `removeEvents()` : Removes all signed events.
