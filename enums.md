@@ -81,27 +81,29 @@ response = client:request()
 print(response.body)
 ```
 
-## Callback
+## Event
 
-An enumeration representing the different types of callbacks.
+An enumeration representing the different types of events.
 
 #### Values
-* `OnVariantList` : Variant List Callback.
-* `OnGameMessage` : Game Message Callback.
-* `OnGenericText` : Generic Text Callback.
-* `OnUpdatePacket` : Game Update Packet Callback.
-* `OnTrackPacket` : Track Packet Callback.
-* `OnRender` : ImGui Render Callback.
-* `OnDiscord` : Discord Callback.
+* `variantlist` : Variant List event.
+* `game_message` : Game Message event.
+* `generic_text` : Generic Text event.
+* `update_packet` : Game Update Packet event.
+* `track_packet` : Track Packet event.
+* `render` : ImGui Render event.
+* `discord` : Discord event.
 
 #### Example Usage
 ```lua
-local bot = GetBot()
-
-function onVariantList(var)
-end
-
-bot:addCallback(Callback.OnVariantList, "onVariantList")
+addEvent(Event.variantlist, function(variant, netid)
+  getBot():getLog():append(
+     string.format(
+        "Type: %s\n",
+        variant:get(0):getString()
+     )
+  )
+end)
 ```
 
 ## VariantType
