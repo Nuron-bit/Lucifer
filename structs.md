@@ -65,6 +65,8 @@ A structure representing a bot.
 * `collectObject(oid: number, range: number)` : Collects the object if bot is in range.
 * `collect(range: number)` : Collect all objects by range.
 * `isInWorld() -> bool` : Returns true if bot is in a world.
+* `isInWorld(name: string) -> bool` : Returns true if bot is in a world with name.
+* `isInTile(x: number, y: number) -> bool` : Returns true if the bot is in the tile.
 * `getPing() -> number` : Returns the ping value of the bot.
 * `getSignal() -> Signal` : Returns the latest geiger signal.
 
