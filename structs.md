@@ -26,6 +26,11 @@ A structure representing a bot.
 * `auto_geiger` : AutoGeiger Instance.
 * `auto_message` : AutoMessage Instance.
 * `auto_spam` : AutoSpam Instance.
+* `auto_crime` : AutoCrime Instance.
+* `auto_farm` : AutoFarm Instance.
+* `auto_fish` : AutoFish Instance.
+* `console` : Console Instance.
+* `log` : Log Instance.
 
 #### Methods
 * `getWorld() -> World` : Returns bot world.
