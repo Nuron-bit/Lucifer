@@ -12,7 +12,7 @@ A structure representing a bot.
 * `level` : The level of the bot.
 * `is_account_secured` : A read-only property that returns whether the bot account is secured.
 * `auto_reconnect` : A boolean property that enables/disables auto-reconnect.
-* `auto_access` : A boolean property that enables/disables auto-access.
+* `auto_accept` : A boolean property that enables/disables auto-accept.
 * `auto_leave_on_admin` : A boolean property that enables/disables auto-leave when an admin is in the world.
 * `auto_leave_on_mod` : A boolean property that enables/disables auto-leave when a mod is in the world.
 * `auto_ban` : A boolean property that enables/disables auto-ban.
@@ -175,13 +175,13 @@ The object class represents an object in a world.
 The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 
 #### Properties
-- `npcType` : The type of the npc.
-- `npcID` : The world index of the npc.
+- `type` : The type of the npc.
+- `id` : The world index of the npc.
 - `x` : Current x-coordinate of npc.
 - `y` : Current y-coordinate of npc.
 - `destx` : Destination x of npc. (Aka next position)
 - `desty` : Destination y of npc. (Aka next position)
-- `npcVar` : NPC variable.
+- `var` : NPC variable.
 - `unk` : Unk Value.
 
 ## TileExtra
@@ -204,6 +204,7 @@ The Tile class represents a single tile in the game world.
 #### Methods
 * `hasExtra() -> boolean` : Returns true if the tile has an extra data field, false otherwise.
 * `getExtra() -> TileExtra*` : Returns a pointer to the extra data field for the tile. Returns nil if the tile has no extra data.
+* `canHarvest() -> boolean` : Returns true if tree is ready.
 
 ## PathNode
 
@@ -220,6 +221,10 @@ The Growscan class represents the result of a "growscan" operation, which is use
 #### Properties
 * `tiles` : A table containing the IDs of the tiles that were found in the growscan, along with the number of times each tile was found.
 * `objects` : A table containing the IDs of the objects that were found in the growscan, along with the number of times each object was found.
+
+#### Methods
+* `getTiles() -> map<id, count>` : Returns tiles.
+* `getObjects() -> map<id, count>` : Returns objects.
 
 ## World
 The World class represents a game world. It contains information about the size of the world, tiles, objects, players, and NPCs.
@@ -241,6 +246,10 @@ The World class represents a game world. It contains information about the size 
 * `getObject(x: number) -> NetObject` : Returns the NetObject object at the specified objectid(oid).
 * `getPlayer(netID: number | string) -> Player` : Returns the NetAvatar object with the specified player netID or name. It returns nil if not found.
 * `getNPC(npcID: number) -> NPC` : Returns the NetNPC object with the specified NPC ID. It returns nil if not found.
+* `getTiles() -> table<Tile>` : Returns tiles. 
+* `getObjects() -> table<NetObject>` : Returns objects. 
+* `getPlayers() -> table<Player>` : Returns players. 
+* `getNPCs() -> table<NPC>` : Returns npcs. 
 * `getLocal() -> Player` : Returns the NetAvatar object representing the local player.
 * `getTileParent(tile: Tile) -> Tile` : Returns the Tile that the specified Tile is attached to.
 * `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
@@ -259,8 +268,6 @@ The ItemInfo class represents information about an item in the game. It contains
 * `collision_type` : The type of the item's collision.
 * `clothing_type` : The type of clothing for the item, if its clothing.
 * `rarity` : The rarity of the item.
-* `flags1` : Unknown.
-* `flags2` : Unknown.
 * `seed_color` : The color of the seed base.
 * `seed_overlay_color` : The color of the seed overlay.
 * `grow_time` : The grow time of the item, if it is a plant.
