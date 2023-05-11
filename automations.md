@@ -30,10 +30,31 @@ AutoMessage Instance which accessible from bot struct.
 * `loop_mode` : A boolean, you can check information on menu by checking help-marker(?).
 * `uid_count` : A read-only integer that represents collected uid count by list message.
 * `messaging` : A read-only boolean that represents if bot is messaging. [List Message]
-* `uids` : A table that contains collected uids.
+* `uid_count` : A number indicating uid count.
 
 #### Methods
-* `Start()` : A function that will start messaging.
-* `Load()` : Loads uid-list from file.
-* `Save()` : Saves uid-list to a file.
-* `Clear()` : Deleted uid-list file + Clears uids that collected.
+* `start()` : A function that will start messaging.
+* `load()` : Loads uid-list from file.
+* `save()` : Saves uid-list to a file.
+* `clear()` : Deleted uid-list file + Clears uids that collected.
+
+## AutoFish
+AutoFish Instance which accessible from bot struct.
+
+#### Properties
+* `enabled` : A boolean indicating whether the auto-fish feature is on or off.
+* `auto_rod` : A boolean indicating if auto-rod on or not.
+* `auto_trash` : A boolean indicating if auto-trash on or not.
+* `auto_drill` : A boolean indicating if auto-drill on or not.
+
+## AutoFarm
+AutoFarm Instance which accessible from bot struct.
+
+#### Properties
+* `enabled` : A boolean indicating whether the auto-farm feature is on or off.
+
+## AutoCrime
+AutoFarm Instance which accessible from bot struct.
+
+#### Properties
+* `enabled` : A boolean indicating whether the auto-crime feature is on or off.
