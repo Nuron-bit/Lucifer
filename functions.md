@@ -11,3 +11,4 @@
 * `addEvent(Event: type, lua_function: function)` : Adds a event.
 * `removeEvent(Event: type)` : Removes the events by specific type.
 * `removeEvents()` : Removes all signed events.
+* `removeColor(text: string) -> string` : Removes all the colors from the text.
