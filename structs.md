@@ -1,4 +1,4 @@
-# LUCIFER V1 - API DOCUMENTATION [STRUCTURES]
+# LUCIFER V1.34 - API DOCUMENTATION [STRUCTURES]
 
 ## Bot
 A structure representing a bot.
