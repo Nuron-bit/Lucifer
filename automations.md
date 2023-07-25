@@ -1,4 +1,4 @@
-# LUCIFER V1.34 - API DOCUMENTATION [AUTOMATIONS]
+# LUCIFER V1.34 - API DOCUMENTATION [AUTOMATION]
 
 ## AutoSpam
 AutoSpam Instance which accessible from bot struct.
