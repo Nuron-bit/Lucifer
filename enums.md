@@ -1,4 +1,4 @@
-# LUCIFER V1 - API DOCUMENTATION [ENUMS]
+# LUCIFER V1.34 - API DOCUMENTATION [ENUMS]
 
 ## BotStatus
 
@@ -26,7 +26,7 @@ An enumeration representing the different statuses a bot can have.
 #### Example Usage
 ```lua
 -- Get the current status of the bot
-local status = GetBot().status
+local status = getBot().status
 
 -- Check if the bot is online
 if status == BotStatus.online then
@@ -49,7 +49,7 @@ An enumeration representing the different status codes for a captcha.
 #### Example Usage
 ```lua
 -- Check if a captcha has been solved
-local captchaStatus = GetBot().captcha_status
+local captchaStatus = getBot().captcha_status
 
 if captchaStatus == CaptchaStatus.solved then
     print("Captcha has been solved!")
@@ -91,8 +91,6 @@ An enumeration representing the different types of events.
 * `generic_text` : Generic Text event.
 * `update_packet` : Game Update Packet event.
 * `track_packet` : Track Packet event.
-* `render` : ImGui Render event.
-* `discord` : Discord event.
 
 #### Example Usage
 ```lua
@@ -145,7 +143,7 @@ An enumeration representing the type of geiger area.
 
 #### Example Usage
 ```lua
-bot = GetBot()
+bot = getBot()
 
 signal = bot:getSignal()
 
@@ -154,7 +152,27 @@ if signal.type ~= GeigerArea.null then
 end
 ```
 
+## Role
+
+An enumeration representing the role type.
+
+#### Values
+* `farm` : Farmer Role
+* `build` : Builder Role
+* `surg` : Master Surgeon Role.
+* `fish` : Fisher Role.
+* `cook` : Chef Role.
+* `startopia` : Star Captain Role.
+
 ## BubbleType
+
+An enumeration representing bubble type.
+
+#### Values
+* `none` : No Bubble.
+* `talk` : Talking Bubble.
+* `brb` : Busy(brb) Bubble.
+
 ## PlayerState
 ## TileType
 ## TileFlag
