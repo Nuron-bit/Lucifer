@@ -1,14 +1,13 @@
-# LUCIFER V1 - API DOCUMENTATION [AUTOMATIONS]
+# LUCIFER V1.34 - API DOCUMENTATION [AUTOMATIONS]
 
 ## AutoSpam
 AutoSpam Instance which accessible from bot struct.
 
 #### Properties
 * `enabled` : A boolean indicating whether the auto-spam feature is on or off.
-* `show_bubble` : A boolean indicating whether a speech bubble should be displayed when auto-spam is active.
-* `show_color` : A boolean indicating whether the message should be displayed with colored text.
+* `random_interval` : A boolean indicating whether bot should send messages with random interval when auto-spam is active.
+* `rest_mode` : A boolean indicating whether bot should rest after spamming a while.
 * `show_emote` : A boolean indicating whether the bot should send player emotions during auto-spam.
-* `detect_spam` : A boolean indicating if spam detector is enabled.
 * `interval` : The time interval between spam messages.
 * `message` : A table of messages where you can set your spam-texts. ( message[1] to message[4] )
 
@@ -31,6 +30,7 @@ AutoMessage Instance which accessible from bot struct.
 * `uid_count` : A read-only integer that represents collected uid count by list message.
 * `messaging` : A read-only boolean that represents if bot is messaging. [List Message]
 * `uid_count` : A number indicating uid count.
+* `message` : A string indicating message.
 
 #### Methods
 * `start()` : A function that will start messaging.
@@ -47,14 +47,28 @@ AutoFish Instance which accessible from bot struct.
 * `auto_trash` : A boolean indicating if auto-trash on or not.
 * `auto_drill` : A boolean indicating if auto-drill on or not.
 
+#### Methods
+* `setRod(id: number)` : A function that will set fishing rod.
+* `setBait(id: number)` : A function that will set fishing bait.
+
 ## AutoFarm
 AutoFarm Instance which accessible from bot struct.
 
 #### Properties
 * `enabled` : A boolean indicating whether the auto-farm feature is on or off.
+* `speed` : Farming Speed.
+* `id` : Farming Item id.
+* `auto_break` : Is Auto-Break mode actived.
+* `auto_place` : Is Auto-Place mode actived.
+
+#### Methods
+* `setActive(index: number, active: boolean)` : A function that will toggle active status by menu index.
 
 ## AutoCrime
 AutoFarm Instance which accessible from bot struct.
 
 #### Properties
 * `enabled` : A boolean indicating whether the auto-crime feature is on or off.
+
+#### Methods
+* `setActive(index: number, active: boolean)` : A function that will toggle active status by menu index.
