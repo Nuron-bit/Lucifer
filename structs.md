@@ -4,6 +4,7 @@
 A structure representing a bot.
 
 #### Properties
+* `name` : The name of the bot.
 * `status` : The status of the player.
 * `captcha_status` : The status of the captcha.
 * `gem_count` : The number of gems the bot has.
@@ -11,6 +12,8 @@ A structure representing a bot.
 * `voucher_count` : The number of vouchers the bot has.
 * `level` : The level of the bot.
 * `is_account_secured` : A read-only property that returns whether the bot account is secured.
+* `move_interval` : The interval between movement packets on pathfinding.
+* `move_range` : The range between tiles while pathfinding.
 * `auto_reconnect` : A boolean property that enables/disables auto-reconnect.
 * `auto_accept` : A boolean property that enables/disables auto-accept.
 * `auto_leave_on_admin` : A boolean property that enables/disables auto-leave when an admin is in the world.
@@ -18,6 +21,7 @@ A structure representing a bot.
 * `auto_ban` : A boolean property that enables/disables auto-ban.
 * `auto_tutorial` : A boolean property that enables/disables auto-tutorial.
 * `auto_collect` : A boolean property that enables/disables auto-collect.
+* `reconnect_interval` : Reconnect interval of the bot.
 * `ignore_gems` : A boolean property that enables/disables ignoring gems.
 * `ignore_essences` : A boolean property that enables/disables ignoring essences.
 * `object_collect_delay` : A number property that sets the delay for collecting spawned objects.
@@ -31,6 +35,12 @@ A structure representing a bot.
 * `auto_fish` : AutoFish Instance.
 * `console` : Console Instance.
 * `log` : Log Instance.
+* `auto_spam` : Auto Spam Instance.
+* `auto_farm` : Auto Farm Instance.
+* `auto_message` : Auto Message Instance.
+* `auto_geiger` : Auto Geiger Instance.
+* `auto_crime` : Auto Crime Instance.
+* `auto_fish` : Auto Fish Instance.
 
 #### Methods
 * `getWorld() -> World` : Returns bot world.
@@ -38,6 +48,9 @@ A structure representing a bot.
 * `getConsole() -> Console` : Returns bot console.
 * `getLog() -> Log` : Returns bot log.
 * `getLogin() -> Login` : Returns bot login.
+* `getProxy()` : Returns proxy instance of bot.
+* `getPing() -> number` : Returns the ping value of the bot.
+* `getSignal() -> Signal` : Returns the latest geiger signal.
 * `connect() -> boolean` : Makes bot connect to the game server.
 * `disconnect()` : Makes bot disconnect from the game server.
 * `sendRaw(packet: GameUpdatePacket)` : Sends Raw packet if its valid & connected & no captcha.
@@ -49,7 +62,12 @@ A structure representing a bot.
 * `unwear(item_id: number)` : Unwears an item if bot is wearing.
 * `drop(item_id: number, item_count: number)` : Drops the item if item's id & count is valid.
 * `trash(item_id: number, item_count: number)` : Trashes the item if item's id & count is valid.
+* `fastDrop(item_id: number, item_count: number)` : Drops the item if item's id & count is valid.
+* `fastTrash(item_id: number, item_count: number)` : Trashes the item if item's id & count is valid.
 * `buy(store_id: string)` : Buys item from store with its store_id.
+* `buy(item_id: number, item_count: number, max_price: number)` : Buys item from vend.
+* `retrieve(x: number, y: number, count: number)` : Retrieves item from gaia etc.
+* `active(x: number, y: number)` : Sends Tile Active packet on a tile.
 * `leaveWorld()` : Leaves from world if bot is in a world.
 * `setBubble(bubble: BubbleType)` : Sets Bot bubble status, you can check enum for more information.
 * `place(x: number, y: number, item: number)` : Places block if its valid.
@@ -68,28 +86,63 @@ A structure representing a bot.
 * `findPath(x: number, y: number)` : Finds tile path and moves to destination.
 * `findWorldPath(x: number, y: number)` : Finds world path and moves to destination.
 * `collectObject(oid: number, range: number)` : Collects the object if bot is in range.
-* `collect(range: number)` : Collect all objects by range.
+* `collect(range: number, interval: number)` : Collect all objects by range and interval.
 * `isInWorld() -> bool` : Returns true if bot is in a world.
 * `isInWorld(name: string) -> bool` : Returns true if bot is in a world with name.
 * `isInTile(x: number, y: number) -> bool` : Returns true if the bot is in the tile.
-* `getPing() -> number` : Returns the ping value of the bot.
-* `getSignal() -> Signal` : Returns the latest geiger signal.
+* `isInTile(point: Tile) -> bool` : Returns true if the bot is in the tile.
+* `updateBot(name: string)` : Updates bot.
+* `updateBot(name: string, password: string)` : Updates bot.
+* `updateBot(name: string, mac: string, rid: string)` : Updates bot.
+* `updateBot(name: string, password: string, mac: string, rid: string)` : Updates bot.
+* `setCountry(country: string)` : Changes bot country. (Must re-connect)
+* `setMac(mac: string)` : Changes mac address of the bot.
+* `setRid(rid: string)` : Changes rid value of the bot.
 
-## Console or Log
+## Socks5Proxy
+Socks5Proxy data container.
+
+#### Properties
+- `ip` : Proxy IP.
+- `port` : Proxy Port.
+- `username` : Proxy Username.
+- `password` : Proxy Password.
+
+## ProxyManager
+ProxyManager that handles proxies.
+
+#### Methods
+- `addProxy(proxy_data: string)` : Adds proxy to list.
+- `removeProxy(ip: string, port: string)` : Removes proxy from list.
+- `setLimit(new_limit: number)` : Sets bot limit.
+
+## Console
 
 A structure representing a console for displaying text.
 
 #### Properties
-* `content` : a string containing the current contents of the console/log.
+* `contents` : a string table containing the current contents of the console.
 
 #### Methods
-* `append(text: string)` : appends the specified text to the console/log's content.
+* `append(text: string)` : appends the specified text to the console content.
+
+## Log
+
+A structure representing a log for displaying text.
+
+#### Properties
+* `content` : a string containing the current content of the logs tab.
+
+#### Methods
+* `append(text: string)` : appends the specified text to the log content.
+
 
 ## Login
 A structure that holds login details like growid, password, mac, klv or so.
 
 #### Properties
-Soon.
+`mac` : Mac Address of the bot.
+`rid` : Rid of the bot.
 
 ## Signal
 A container that have details about latest geiger area.
@@ -192,9 +245,10 @@ The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 - `unk` : Unk Value.
 
 ## TileExtra
+The extra datas of the tile.
 
 #### Properties
-Soon
+(Same as nightmare docs)
 
 ## Tile
 
@@ -212,6 +266,7 @@ The Tile class represents a single tile in the game world.
 * `hasExtra() -> boolean` : Returns true if the tile has an extra data field, false otherwise.
 * `getExtra() -> TileExtra*` : Returns a pointer to the extra data field for the tile. Returns nil if the tile has no extra data.
 * `canHarvest() -> boolean` : Returns true if tree is ready.
+* `hasFlag(flag: number) -> boolean` : Returns true if the flag is actived on tile.
 
 ## PathNode
 
@@ -246,6 +301,7 @@ The World class represents a game world. It contains information about the size 
 * `objects` : A table containing all the NetObjects in the world.
 * `players` : A table containing all the Players in the world.
 * `npcs` : A table containing all the Npcs in the world.
+* `adventures` : A table containing bot adventure item data in the world.
 * `public` : A boolean value indicating whether the world is public or not.
 * `version` : The version of the world.
 #### Methods
@@ -253,13 +309,16 @@ The World class represents a game world. It contains information about the size 
 * `getObject(x: number) -> NetObject` : Returns the NetObject object at the specified objectid(oid).
 * `getPlayer(netID: number | string) -> Player` : Returns the NetAvatar object with the specified player netID or name. It returns nil if not found.
 * `getNPC(npcID: number) -> NPC` : Returns the NetNPC object with the specified NPC ID. It returns nil if not found.
+* `getAdventure(index: number) -> Adventure` : Returns adventure data at index. 
 * `getTiles() -> table<Tile>` : Returns tiles. 
 * `getObjects() -> table<NetObject>` : Returns objects. 
 * `getPlayers() -> table<Player>` : Returns players. 
-* `getNPCs() -> table<NPC>` : Returns npcs. 
+* `getNPCs() -> table<NPC>` : Returns npcs.
+* `getAdventures() -> table<Adventure>` : Returns adventure datas. 
 * `getLocal() -> Player` : Returns the NetAvatar object representing the local player.
 * `getTileParent(tile: Tile) -> Tile` : Returns the Tile that the specified Tile is attached to.
 * `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
+* `hasAdventure(adventure_item: number)` : Returns true if bot has adventure_item actived.
 * `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world.
 
 ## ItemInfo
@@ -442,3 +501,11 @@ HttpClient represents a class that uses curl library to send http/s requests.
 #### Methods
 - `setMethod(method: Method)` : A function that sets the HTTP method.
 - `request() -> httpresult` : A function that sends the HTTP request and returns an HttpResult object.
+
+## Mutex
+Mutex from standard c++ library.
+
+#### Methods
+- `lock()` : Locks mutex.
+- `unlock()` : Unlocks mutex.
+
