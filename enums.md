@@ -164,7 +164,7 @@ An enumeration representing the role type.
 * `cook` : Chef Role.
 * `startopia` : Star Captain Role.
 
-## BubbleType
+## Bubble
 
 An enumeration representing bubble type.
 
