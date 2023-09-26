@@ -70,9 +70,9 @@ world_manager:assign() -- Spreads all worlds automatically.
 world_manager:assignFarm() -- Spreads farm worlds automatically.
 world_manager:assignStorage() -- Spreads storage worlds automatically.
 
-world_manager:apply(bot); -- Will assign the selected worlds to specific bot.
-world_manager:applyFarm(Lucifer* bot) -- Will assign the selected farm worlds to specific bot.
-world_manager:applyStorage(Lucifer* bot) -- Will assign the selected storages to specific bot.
+world_manager:apply(getBot()); -- Will assign the selected worlds to specific bot.
+world_manager:applyFarm(getBot()) -- Will assign the selected farm worlds to specific bot.
+world_manager:applyStorage(getBot()) -- Will assign the selected storages to specific bot.
 
 world_manager:unselectAll()
 world_manager:selectAll()
