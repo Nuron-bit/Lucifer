@@ -132,7 +132,7 @@ function spam(text, interval) -- We have decleared 2 parameters.
 end
 
 runThread(spam, "Thanks for using Lunatic Lucifer", 8000) -- We need to add 2 additional parameters rather than function because function takes 2 parameters.
-runThread(spam, "That is a very secret message that would occur anytime, math.random(1, 1000000))
+runThread(spam, "That is a very secret message that would occur anytime", math.random(1, 1000000))
 
 while true do -- Main Script.
   sleep(...)
