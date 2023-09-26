@@ -1,4 +1,4 @@
-# LUCIFER V1.34 - API DOCUMENTATION [ENUMS]
+# LUCIFER V1.74 - API DOCUMENTATION [ENUMS]
 
 ## BotStatus
 
@@ -22,6 +22,9 @@ An enumeration representing the different statuses a bot can have.
 * `invalid_account` : the bot is invalid.
 * `error_connecting` : there was an error connecting to the server.
 * `logon_fail` : the bot failed to log in.
+* `captcha_requested` : captcha requested by gt.
+* `mod_entered` : a mod entered bot's world.
+* `high_load` : the bot's subserver is currently on high load.
 
 #### Example Usage
 ```lua
@@ -45,6 +48,9 @@ An enumeration representing the different status codes for a captcha.
 * `solving` : the captcha is currently being solved.
 * `wrong` : the answer to the captcha was incorrect.
 * `failed` : the captcha could not be solved.
+* `no_access` : the captcha could not be solved due to http forbidden or bad gateway error.
+* `invalid_key` : the captcha could not be solved due to wrong captcha api key.
+* `invalid_token` : the captcha could not be solved due to corrupted website.
 
 #### Example Usage
 ```lua
@@ -172,6 +178,24 @@ An enumeration representing bubble type.
 * `none` : No Bubble.
 * `talk` : Talking Bubble.
 * `brb` : Busy(brb) Bubble.
+
+## StorageType
+
+An enumeration representing storage type on rotation.
+
+#### Values
+* `pack` : Type Pack Storage.
+* `seed` : Type Seed Storage.
+
+## Proxy
+
+An enumeration representing proxy type.
+
+#### Values
+* `none` : No Proxy.
+* `http` : HTTP Proxy.
+* `https` : HTTPs Proxy.
+* `socks5` : Socks5 Proxy.
 
 ## PlayerState
 ## TileType
