@@ -74,7 +74,7 @@ An enumeration representing the different HTTP methods.
 * `delete` : HTTP DELETE method.
 * `head` : HTTP HEAD method.
 
-#### Example Usage
+#### Example
 ```lua
 -- Make an HTTP request using the GET method
 
@@ -92,13 +92,13 @@ print(response.body)
 An enumeration representing the different types of events.
 
 #### Values
-* `variantlist` : Variant List event.
-* `game_message` : Game Message event.
-* `generic_text` : Generic Text event.
-* `update_packet` : Game Update Packet event.
-* `track_packet` : Track Packet event.
+* `variantlist` : Variant List event. -- function(variantlist, netid)
+* `game_message` : Game Message event. -- function(message)
+* `generic_text` : Generic Text event. -- function(message)
+* `update_packet` : Game Update Packet event. -- function(packet)
+* `track_packet` : Track Packet event. -- function(message)
 
-#### Example Usage
+#### Example
 ```lua
 addEvent(Event.variantlist, function(variant, netid)
   getBot():getLog():append(
@@ -125,7 +125,7 @@ An enumeration representing the variant type of a variant.
 * `component` : type component.
 * `entity` : type entity.
 
-#### Example Usage
+#### Example
 ```lua
 vlist = variantlist.new()
 
@@ -147,7 +147,7 @@ An enumeration representing the type of geiger area.
 * `rapid` : Rapid Green Area.
 * `prize` : Prize Area.
 
-#### Example Usage
+#### Example
 ```lua
 bot = getBot()
 
@@ -178,6 +178,12 @@ An enumeration representing bubble type.
 * `none` : No Bubble.
 * `talk` : Talking Bubble.
 * `brb` : Busy(brb) Bubble.
+
+#### Example
+```lua
+bot = getBot()
+bot:setBubble(Bubble.talk)
+```
 
 ## StorageType
 
