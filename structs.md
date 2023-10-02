@@ -47,14 +47,14 @@ A structure representing a bot.
 * `auto_crime` : AutoCrime Instance.
 * `auto_farm` : AutoFarm Instance.
 * `auto_fish` : AutoFish Instance.
+* `auto_cook` : AutoCook Instance.
+* `auto_carnival` : AutoCarnival Instance.
+* `auto_parkour` : AutoParkour Instance.
+* `auto_transfer` : AutoTransfer Instance.
+* `auto_harvest` : AutoHarvest Instance.
+* `auto_plant` : AutoPlant Instance.
 * `console` : Console Instance.
 * `log` : Log Instance.
-* `auto_spam` : Auto Spam Instance.
-* `auto_farm` : Auto Farm Instance.
-* `auto_message` : Auto Message Instance.
-* `auto_geiger` : Auto Geiger Instance.
-* `auto_crime` : Auto Crime Instance.
-* `auto_fish` : Auto Fish Instance.
 
 #### Methods
 * `getWorld() -> World` : Returns bot world.
@@ -63,8 +63,12 @@ A structure representing a bot.
 * `getLog() -> Log` : Returns bot log.
 * `getLogin() -> Login` : Returns bot login.
 * `getProxy()` : Returns proxy instance of bot.
+* `getPlaytime()` : Returns account playtime of bot.
+* `getAge()` : Returns account age of bot.
+* `getActiveTime()` : Returns active time of bot as string.
 * `getPing() -> number` : Returns the ping value of the bot.
 * `getSignal() -> Signal` : Returns the latest geiger signal.
+* `getCaptcha() -> string` : Returns the captcha link if bot is received.
 * `connect() -> boolean` : Makes bot connect to the game server.
 * `disconnect()` : Makes bot disconnect from the game server.
 * `sendRaw(packet: GameUpdatePacket)` : Sends Raw packet if its valid & connected & no captcha.
@@ -81,6 +85,7 @@ A structure representing a bot.
 * `buy(store_id: string)` : Buys item from store with its store_id.
 * `buy(item_id: number, item_count: number, max_price: number)` : Buys item from vend.
 * `retrieve(x: number, y: number, count: number)` : Retrieves item from gaia etc.
+* `retrieve(x: number, y: number)` : Retrieves all items (200 max) from gaia etc.
 * `active(x: number, y: number)` : Sends Tile Active packet on a tile.
 * `leaveWorld()` : Leaves from world if bot is in a world.
 * `setBubble(bubble: BubbleType)` : Sets Bot bubble status, you can check enum for more information.
@@ -91,10 +96,15 @@ A structure representing a bot.
 * `moveTo(difference_x: number, difference_y: number)` : Moves to tile with x and y difference. Ex: moveTo(1, 0) makes u move right.
 * `moveTile(tilex: number, tiley: number)` : Moves to the tile if range safe & valid position.
 * `moveLeft()` : Moves bot to left if its valid position
+* `moveLeft(range: number)` : Moves bot to left if its valid position
 * `moveRight()` : Moves bot to right if its valid position
+* `moveRight(range: number)` : Moves bot to right if its valid position
 * `moveUp()` : Moves bot to up if its valid position
+* `moveUp(range: number)` : Moves bot to up if its valid position
 * `moveDown()` : Moves bot to down if its valid position
+* `moveDown(range: number)` : Moves bot to down if its valid position
 * `enter()` : Enters the door, if there is door.
+* `enter(pass: string)` : Enters the password door with custom password.
 * `respawn()` : Respawns the bot.
 * `getPath(x: number, y: number) -> table` : Returns table of PathNodes if path found. Returns empty table if not found.
 * `findPath(x: number, y: number)` : Finds tile path and moves to destination.
@@ -109,9 +119,13 @@ A structure representing a bot.
 * `updateBot(name: string, password: string)` : Updates bot.
 * `updateBot(name: string, mac: string, rid: string)` : Updates bot.
 * `updateBot(name: string, password: string, mac: string, rid: string)` : Updates bot.
+* `setSkin(id: number)` : Skin id of the bot. (1 to 6).
+* `setDirection(faceleft: boolean)` : Sets facing of the bot.
 * `setCountry(country: string)` : Changes bot country. (Must re-connect)
 * `setMac(mac: string)` : Changes mac address of the bot.
 * `setRid(rid: string)` : Changes rid value of the bot.
+* `runScript(content: string)` : Runs custom script on bot.
+* `stopScript()` : Stops running script of the bot.
 
 ## ProxyManager
 ProxyManager that handles proxies.
