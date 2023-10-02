@@ -1,4 +1,4 @@
-# LUCIFER V1.74 - API DOCUMENTATION [FUNCTIONS]
+# LUCIFER V1.8 - API DOCUMENTATION [FUNCTIONS]
 
 * `sleep(ms: number)` : Sleeps script for certain milliseconds.
 #### Example
@@ -19,6 +19,14 @@ for i, item in pairs(getInfos()) do
     print("Found Pepper Tree on database.")
   end
 end
+```
+
+* `read(path: string) -> string` : Reads from file and returns its content.
+* `write(path: string, content: string)` : Writes content to a file.
+#### Example
+```lua
+write("nuron.txt", "Some Message")
+print(read("nuron.txt"))
 ```
 
 * `addBot(name: string, password: string) -> Bot` :  Adds bot if it doesnt exist.
@@ -142,6 +150,7 @@ end
 ## Here list of shortcut functions that u can access.
 * getTile
 * getTiles
+* getTilesSafe
 * getObject
 * getObjects
 * getPlayer
