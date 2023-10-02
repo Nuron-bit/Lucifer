@@ -1,4 +1,4 @@
-# LUCIFER V1.34 - API DOCUMENTATION [STRUCTURES]
+# LUCIFER V1.8 - API DOCUMENTATION [STRUCTURES]
 
 ## Bot
 A structure representing a bot.
@@ -7,6 +7,7 @@ A structure representing a bot.
 * `name` : The name of the bot.
 * `status` : The status of the player.
 * `captcha_status` : The status of the captcha.
+* `selected` : Is bot selected on the menu.
 * `gem_count` : The number of gems the bot has.
 * `pearl_count` : The number of pearls the bot has.
 * `voucher_count` : The number of vouchers the bot has.
@@ -14,6 +15,11 @@ A structure representing a bot.
 * `is_account_secured` : A read-only property that returns whether the bot account is secured.
 * `move_interval` : The interval between movement packets on pathfinding.
 * `move_range` : The range between tiles while pathfinding.
+* `rest_time` : Rest time of the bot.
+* `rest_interval` : The interval between rests.
+* `consume_id` : The item id of the consumable.
+* `consume_interval` : The interval between consumes.
+* `consumed_once` : Is bot consumed a consumable once (You can toggle this off for forcing to consume).
 * `auto_reconnect` : A boolean property that enables/disables auto-reconnect.
 * `auto_accept` : A boolean property that enables/disables auto-accept.
 * `auto_leave_on_admin` : A boolean property that enables/disables auto-leave when an admin is in the world.
@@ -21,10 +27,18 @@ A structure representing a bot.
 * `auto_ban` : A boolean property that enables/disables auto-ban.
 * `auto_tutorial` : A boolean property that enables/disables auto-tutorial.
 * `auto_collect` : A boolean property that enables/disables auto-collect.
+* `auto_consume` : A boolean property that enables/disables auto-consume.
+* `auto_trash` : A boolean property that enables/disables auto-trash.
+* `auto_rest_mode` : A boolean property that enables/disables auto-rest-mode.
+* `auto_take_pickaxe` : A boolean property that enables/disables auto-take-pickaxe.
+* `auto_expand_inventory` : A boolean property that enables/disables auto-expand-inventory.
+* `legit_mode` : A boolean property that enables/disables legit-mode.
 * `reconnect_interval` : Reconnect interval of the bot.
 * `ignore_gems` : A boolean property that enables/disables ignoring gems.
 * `ignore_essences` : A boolean property that enables/disables ignoring essences.
 * `object_collect_delay` : A number property that sets the delay for collecting spawned objects.
+* `collect_all` : A bool property that enables/disables collect all mode while collecting.
+* `collect_path_check` : A bool property that enables/disables path check while collecting.
 * `collect_interval` : A number property that sets the interval for collecting.
 * `collect_range` : A number property that sets the range for collecting.
 * `auto_geiger` : AutoGeiger Instance.
@@ -99,22 +113,25 @@ A structure representing a bot.
 * `setMac(mac: string)` : Changes mac address of the bot.
 * `setRid(rid: string)` : Changes rid value of the bot.
 
-## Socks5Proxy
-Socks5Proxy data container.
-
-#### Properties
-- `ip` : Proxy IP.
-- `port` : Proxy Port.
-- `username` : Proxy Username.
-- `password` : Proxy Password.
-
 ## ProxyManager
 ProxyManager that handles proxies.
+
+#### Properties
+- `localize` : Built-in Localize Country feature (Boolean).
+- `spread` : Built-in Spread Proxy feature (Boolean).
 
 #### Methods
 - `addProxy(proxy_data: string)` : Adds proxy to list.
 - `removeProxy(ip: string, port: string)` : Removes proxy from list.
 - `setLimit(new_limit: number)` : Sets bot limit.
+
+```lua
+manager = getProxyManager()
+
+manager:setLimit(3)
+manager:addProxy("176.42.69.53:80")
+manager:removeProxy("176.42.69.53", 80)
+```
 
 ## Console
 
@@ -126,6 +143,16 @@ A structure representing a console for displaying text.
 #### Methods
 * `append(text: string)` : appends the specified text to the console content.
 
+#### Example
+```lua
+console = getBot():getConsole()
+console:append("`4Lucifer v1.8")
+
+for i, content in pairs(console.contents) do
+  print(content) -- Printing the console contents one by one.
+end
+```
+
 ## Log
 
 A structure representing a log for displaying text.
@@ -135,7 +162,14 @@ A structure representing a log for displaying text.
 
 #### Methods
 * `append(text: string)` : appends the specified text to the log content.
+* `clear()` : clears the logs.
 
+#### Example
+```lua
+log = getBot():getLog()
+
+log:append("This is a log message")
+```
 
 ## Login
 A structure that holds login details like growid, password, mac, klv or so.
@@ -152,6 +186,12 @@ A container that have details about latest geiger area.
 * `y` : Tile position y of signal.
 * `type` : GeigerArea type.
 
+#### Example
+```lua
+signal = getBot():getSignal()
+print(string.format("Found geiger signal at %i:%i", signal.x, signal.y))
+```
+
 ## Inventory
 
 The Inventory class represents a player's inventory in the game. It contains information about the items the player has, including the item ID, count, and whether the item is active.
@@ -166,7 +206,15 @@ The Inventory class represents a player's inventory in the game. It contains inf
 * `getItems() -> table` : Returns a table containing all the InventoryItem objects in the inventory.
 * `findItem(itemID: number | string) or getItemCount(itemID: number | string) -> number` : Returns the InventoryItem count with the specified item ID. It returns 0 if not found.
 * `canCollect(itemID: number) -> boolean` : Returns true if the player can collect the item with the specified item ID, false otherwise.
-* `hasItems() -> boolean` : Returns true if the player has item.
+
+#### Example
+```lua
+inventory = getBot():getInventory()
+
+for i, item in pairs(inventory:getItems()) do
+  print("Found Item "..getInfo(item.id).name)
+end
+```
 
 ## InventoryItem
 
@@ -176,6 +224,16 @@ A structure representing an item in an inventory.
 * `id` : an integer representing the ID of the item.
 * `count` : an integer representing the number of this item in the inventory.
 * `isActive` : a boolean indicating whether or not the item is currently weared.
+
+#### Example
+```lua
+inventory = getBot():getInventory()
+
+inventory_item = inventory:getItem(242)
+if inventory_item then
+  print("Inventory contains "..inventory_item.count.." world locks.")
+end
+```
 
 ## Clothes
 
@@ -194,6 +252,16 @@ The `Clothes` class represents the clothing items that a player's avatar is wear
 * `ances` : The ID of the accessory item the avatar is wearing.
 * `unk1` : An unknown value related to the avatar's clothing.
 * `unk2` : An unknown value related to the avatar's clothing.
+
+#### Example
+```lua
+player = getLocal()
+
+if player then
+  clothes = player.clothes
+  print(clothes.hat)
+end
+```
 
 ## Player
 The Player class represents an in-game player and contains various properties to access information about the player.
@@ -220,6 +288,14 @@ The Player class represents an in-game player and contains various properties to
 * `roleicon` : The role icon of the player.
 * `clothes` : An instance of the Clothes class representing the clothes of the player. See Clothes class documentation for more details.
 
+#### Example
+```lua
+player = getPlayer("nuron")
+
+print("NetID: "..player.netid)
+print("UserID: "..player.userid)
+```
+
 ## NetObject
 The object class represents an object in a world.
 
@@ -230,6 +306,11 @@ The object class represents an object in a world.
 - `count` : The item count of object.
 - `flags` : The object flags.
 - `oid` : The object id.
+
+#### Example
+```lua
+print("First Object's alt item count: "..getObject(1).count)
+```
 
 ## NPC
 The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
@@ -243,6 +324,11 @@ The NPC class that represents a npc in a world. Which is like ghost, pinata etc.
 - `desty` : Destination y of npc. (Aka next position)
 - `var` : NPC variable.
 - `unk` : Unk Value.
+
+#### Example
+```lua
+print("First NPC's id: "..getNPC(1).id)
+```
 
 ## TileExtra
 The extra datas of the tile.
@@ -268,6 +354,15 @@ The Tile class represents a single tile in the game world.
 * `canHarvest() -> boolean` : Returns true if tree is ready.
 * `hasFlag(flag: number) -> boolean` : Returns true if the flag is actived on tile.
 
+#### Example
+```lua
+tile = getTile(0, 0)
+
+if tile:canHarvest() then
+  print("You can harvest this tile!")
+end
+```
+
 ## PathNode
 
 The PathNode class represents a node in a pathfinding algorithm.
@@ -275,6 +370,16 @@ The PathNode class represents a node in a pathfinding algorithm.
 #### Properties
 * `x` : The x-coordinate of the node.
 * `y` : The y-coordinate of the node.
+
+#### Example
+```lua
+path = getBot():getPath(50, 30)
+
+for i, node in pairs(path) do
+ getBot():moveTile(node.x, node.y)
+ sleep(100)
+end
+```
 
 ## Growscan
 
@@ -287,6 +392,15 @@ The Growscan class represents the result of a "growscan" operation, which is use
 #### Methods
 * `getTiles() -> map<id, count>` : Returns tiles.
 * `getObjects() -> map<id, count>` : Returns objects.
+
+#### Example
+```lua
+growscan = getBot():getWorld().growscan
+
+for id, count in pairs(growscan:getObjects()) do
+  print(getInfo(id).name..": x"..count)
+end
+```
 
 ## World
 The World class represents a game world. It contains information about the size of the world, tiles, objects, players, and NPCs.
@@ -310,7 +424,8 @@ The World class represents a game world. It contains information about the size 
 * `getPlayer(netID: number | string) -> Player` : Returns the NetAvatar object with the specified player netID or name. It returns nil if not found.
 * `getNPC(npcID: number) -> NPC` : Returns the NetNPC object with the specified NPC ID. It returns nil if not found.
 * `getAdventure(index: number) -> Adventure` : Returns adventure data at index. 
-* `getTiles() -> table<Tile>` : Returns tiles. 
+* `getTiles() -> table<Tile>&` : Returns tiles. 
+* `getTilesSafe() -> table<Tile>` : Returns copy of tiles. 
 * `getObjects() -> table<NetObject>` : Returns objects. 
 * `getPlayers() -> table<Player>` : Returns players. 
 * `getNPCs() -> table<NPC>` : Returns npcs.
@@ -320,6 +435,18 @@ The World class represents a game world. It contains information about the size 
 * `hasAccess(x: number, y: number) -> boolean` : Returns true if the player has access to the specified x,y position, false otherwise.
 * `hasAdventure(adventure_item: number)` : Returns true if bot has adventure_item actived.
 * `isValidPosition(x: number, y: number) -> boolean` : Returns true if the specified x,y position is within the bounds of the world.
+
+#### Example
+```lua
+world = getBot():getWorld()
+
+for i, tile in pairs(world:getTiles()) do
+ if tile.fg == 242 then
+   print("Found World Lock in world "..world.name)
+   break
+ end
+end
+```
 
 ## ItemInfo
 The ItemInfo class represents information about an item in the game. It contains information about the item's id, category, kind, collision, rarity, name, texture, and more.
@@ -345,6 +472,11 @@ The ItemInfo class represents information about an item in the game. It contains
 * `texture_y` : The y-coordinate of the texture for the item. (Sprite Position)
 * `null_Item` : True if item name contains null.
 
+#### Example
+```lua
+print("You need to hit "..getInfo(7188).strength.." times to break blue gem lock.")
+```
+
 ## GameUpdatePacket
 
 Represents a packet that updates the state of an object in the game.
@@ -365,6 +497,15 @@ Represents a packet that updates the state of an object in the game.
 - `particle_rotation` : The rotation of a particle being updated.
 - `int_x` : An integer variable used in certain types of update packets. (Ex Tile Position)
 - `int_y` : An integer variable used in certain types of update packets. (Ex Tile Position)
+
+#### Example
+```lua
+packet = GameUpdatePacket.new()
+...
+packet.type = 0
+...
+getBot():sendRaw(packet)
+```
 
 ## Vector2
 A Vector2 is a container that holds x and y positions.
@@ -401,12 +542,33 @@ Represents a variant type that can store different types of data.
 - `getVector2() -> Vector2` : Returns the stored data as a 2D vector.
 - `getVector3() -> Vector3` : Returns the stored data as a 3D vector.
 
+#### Example
+```lua
+variant = variant.new()
+
+variant:set(5)
+print(variant:getInt())
+```
+
 ## variantlist
 Represents a list of variant objects.
 
 #### Methods
 - `get(index) -> variant` : Returns the variant object at the specified index.
 - `print() -> string` : Dumps the entire list to a string.
+
+#### Example
+```lua
+function on_variantlist(variantlist, netid)
+  head = variant:get(0):getString()
+  if head == "OnConsoleMessage" then
+    console_message = variant:get(1):getString()
+  end
+end
+
+addEvent(Event.variantlist, on_variantlist)
+listenEvents(60)
+```
 
 ## RTParam
 
@@ -436,6 +598,17 @@ RTVAR represents a runtime variable that can have multiple parameters.
 - `modify(key: string, parameters: table, hasSeperator: boolean)` : Modifies rtparam with the given key.
 - `parse(str: string)` : Parses a string and updates the parameter list accordingly.
 - `size() -> number` : Returns the number of rtparams in the RTVAR.
+
+#### Example
+```lua
+var = RTVAR.new()
+
+var:append("action", "dialog_return", false)
+var:append("dialog_name", "nuron", false)
+var:append("x", 36, true)
+
+print(var:dump())
+```
 
 ## Embed
 The Embed class represents an embed object that can be used to display rich content in a Discord message. It has the following properties and methods:
@@ -478,6 +651,17 @@ A discord webhook class where you can send webhooks.
 - `send()` : Function that sends the webhook message.
 - `edit(message_id: number)`  : Function that edits the webhook message with message_id.
 
+#### Example
+```lua
+webhook = Webhook.new(url/message_url)
+
+webhook.embed1.use = true
+webhook.embed1.title = "Example Webhook"
+webhook.embed1.description = "This is a embed description!"
+
+webhook:send()
+```
+
 ## HttpResult
 HttpResult is a container where it stores http response datas.
 
@@ -500,12 +684,16 @@ HttpClient represents a class that uses curl library to send http/s requests.
 
 #### Methods
 - `setMethod(method: Method)` : A function that sets the HTTP method.
+- `setProxy(type: Proxy, proxydata: string)` : A function that sets proxy.
+- `removeProxy()` : A function that removes proxy.
 - `request() -> httpresult` : A function that sends the HTTP request and returns an HttpResult object.
 
-## Mutex
-Mutex from standard c++ library.
+#### Example
+```lua
+client = HttpClient.new()
 
-#### Methods
-- `lock()` : Locks mutex.
-- `unlock()` : Unlocks mutex.
+client.url = "https://www.google.com"
+client:setProxy(Proxy.socks5, "127.0.0.1:2580")
 
+print("Response: "..client:request().body)
+```
