@@ -1,3 +1,5 @@
+# LUCIFER V1.8 - API DOCUMENTATION [ROTATION]
+
 ## Rotation
 Rotation instance that stored on bot struct.
 
@@ -6,10 +8,16 @@ Rotation instance that stored on bot struct.
 - `anti_fire` : Rotation's Anti Fire feature. (Boolean)
 - `anti_toxic` : Rotation's Anti Toxic feature. (Boolean)
 - `take_fossil` : Rotation's Take Fossil feature. (Boolean)
+- `auto_fill` : Rotation Auto Fill feature. (bool)
+- `dynamic_delay` : Rotation Dynamic Delay. (bool)
 - `gem_limit` : Rotation Gem Limit. (number)
 - `world_limit` : Rotation Farm Limit. (number)
 - `id` : Rotation Anti Fire feature. (number)
 - `pack` : Rotation Selected Pack Index. (number)
+- `harvest_interval` : Rotation Harvest Interval. (number)
+- `plant_interval` : Rotation Plant Interval. (number)
+- `break_interval` : Rotation Break Interval. (number)
+- `warp_interval` : Rotation Warp Interval. (number)
 - `seed_storage` : Rotation Seed Storage. (string) (read-only)
 - `pack_storage` : Rotation Pack Storage. (string) (read-only)
 - `farms` : Rotation Farm List. (table-string) (read-only)
@@ -21,6 +29,8 @@ getBot().rotation.enabled = true/false
 getBot().rotation.anti_fire = true/false -- Not Implemented.
 getBot().rotation.anti_toxic = true/false -- Not Implemented.
 getBot().rotation.take_fossil = true/false -- Not Implemented.
+getBot().rotation.dynamic_delay = true/false
+getBot().rotation.auto_fill = true/false
 getBot().rotation.gem_limit = 2000
 getBot().rotation.world_limit = 9
 getBot().rotation.id = 4584
@@ -29,6 +39,10 @@ getBot().rotation.seed_storage -- Read only Seed Storage to view.
 getBot().rotation.pack_storage -- Read only Pack Storage to view.
 getBot().rotation.farms -- Read only table of rotation worlds to view.
 getBot().rotation.index -- Read only index of the current rotation world.
+getBot().harvest_interval = 0.18
+getBot().break_interval = 0.20
+getBot().plant_interval = 0.17
+getBot().warp_interval = 12
 ```
 
 ## World Manager
