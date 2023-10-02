@@ -1,4 +1,4 @@
-# LUCIFER V1.74 - API DOCUMENTATION [AUTOMATION]
+# LUCIFER V1.8 - API DOCUMENTATION [AUTOMATION]
 
 ## AutoSpam
 AutoSpam Instance which accessible from bot struct.
@@ -111,7 +111,7 @@ farm.id = 4584
 farm.speed = 100
 
 for i = 0, 4 do
-  farm:setActive(i, true -- Enabling first 5 tile.
+  farm:setActive(i, true) -- Enabling first 5 tile.
 end
 ```
 
@@ -209,7 +209,11 @@ AutoTransfer instance which accessible from bot struct.
 #### Properties
 * `enabled` : A boolean indicating whether the auto-transfer feature is on or off.
 * `drop_vertical` : A boolean indicating whether the drop-vertical feature is on or off.
+* `auto_vend` : A boolean indicating whether the auto-vend feature is on or off.
 * `restock_vend` : A boolean indicating whether the restock-vend feature is on or off.
+* `set_price` : Item's price to set on vend.
+* `buy_price` : Item's price to buy from vend.
+* `per_item` : Item's buy method.
 * `itemid` : The itemid of transfering item.
 
 #### Example
@@ -219,4 +223,42 @@ transfer.enabled = true
 transfer.drop_vertical = true
 transfer.restock_vend = true
 transfer.itemid = 4584 -- Pepper ID
+```
+
+## AutoHarvest
+AutoHarvest instance which accessible from bot struct.
+
+#### Properties
+* `enabled` : A boolean indicating whether the auto-harvest feature is on or off.
+
+#### Methods
+* `add(string format)` : A function that lets you to add worlds.
+* `remove(string name)` : A function that lets you to remove worlds.
+* `setStorage(string name|id)` : A function that lets you to update storage world.
+
+#### Example
+```lua
+harvest = getBot().auto_harvest -- Accessing AutoHarvest from bot struct.
+harvest:setStorage("NURON|123")
+harvest:add("NURON:ID:4585")
+harvest.enabled = true
+```
+
+## AutoPlant
+AutoPlant instance which accessible from bot struct.
+
+#### Properties
+* `enabled` : A boolean indicating whether the auto-plant feature is on or off.
+
+#### Methods
+* `add(string format)` : A function that lets you to add worlds.
+* `remove(string name)` : A function that lets you to remove worlds.
+* `setStorage(string name|id)` : A function that lets you to update storage world.
+
+#### Example
+```lua
+plant = getBot().auto_plant -- Accessing AutoPlant from bot struct.
+plant:setStorage("NURON|123")
+plant:add("NURON:ID:4585")
+plant.enabled = true
 ```
