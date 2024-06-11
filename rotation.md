@@ -1,48 +1,43 @@
-# LUCIFER V1.8 - API DOCUMENTATION [ROTATION]
+# LUCIFER V2.32 - API DOCUMENTATION [ROTATION]
 
 ## Rotation
 Rotation instance that stored on bot struct.
 
 #### Properties
 - `enabled` : Rotation active. (Boolean)
-- `anti_fire` : Rotation's Anti Fire feature. (Boolean)
-- `anti_toxic` : Rotation's Anti Toxic feature. (Boolean)
-- `take_fossil` : Rotation's Take Fossil feature. (Boolean)
-- `auto_fill` : Rotation Auto Fill feature. (Boolean)
-- `dynamic_delay` : Rotation Dynamic Delay. (Boolean)
-- `gem_limit` : Rotation Gem Limit. (number)
-- `world_limit` : Rotation Farm Limit. (number)
-- `id` : Rotation Anti Fire feature. (number)
-- `pack` : Rotation Selected Pack Index. (number)
-- `harvest_interval` : Rotation Harvest Interval. (number)
-- `plant_interval` : Rotation Plant Interval. (number)
-- `break_interval` : Rotation Break Interval. (number)
-- `warp_interval` : Rotation Warp Interval. (number)
-- `seed_storage` : Rotation Seed Storage. (string) (read-only)
-- `pack_storage` : Rotation Pack Storage. (string) (read-only)
-- `farms` : Rotation Farm List. (table-string) (read-only)
-- `index` : Rotation Current World Index. (number) (read-only)
+- `status` : Rotation status. (number)
+- `custom_position` : Bot's Custom Break Tiles that managed by bitwise operations. (number)
+- `break_x` : Bot's Custom Break Position X. (number)
+- `break_y` : Bot's Custom Break Position Y. (number)
+- `seed_drop_amount` : Bot's Seed Drop Amount in Storage. (number)
+- `auto_rest` : Rotation's Auto Rest Feature. (Boolean)
+- `auto_exchange` : Rotation's Auto Exchange Feature. (Boolean)
+- `auto_jammer` : Rotation's Auto Jammer Feature. (Boolean)
+- `auto_leave_on_player` : Rotation's Auto Leave on Player Feature. (Boolean)
+- `dynamic_delay` : Rotation's Dynamic Delay Feature. (Boolean)
+- `ignore_plant` : Rotation's Ignore Plant Feature. (Boolean)
+- `harvest_roots` : Rotation's Harvest Roots Feature. (Boolean)
+- `clear_objects` : Rotation's Clear Objects Feature. (Boolean)
+- `one_by_one` : Rotation's One by One Feature. (Boolean)
+- `pnb_in_home` : Rotation's PNB in Home Feature. (Boolean)
+- `harvest_until_level` : Rotation's Harvest until Level Feature. (Boolean)
+- `visit_random_worlds` : Rotation's Clear History Feature. (Boolean)
+  - `pnb_world` : Customizable PNB World. (String)
+- `harvest_interval` : Bot's Harvest Interval. (float)
+- `plant_interval` : Bot's Plant Interval. (float)
+- `break_interval` : Bot's Break/Place Interval. (float)
+- `warp_interval` : Bot's Warp Interval. (float)
 
 #### Example
 ```lua
-getBot().rotation.enabled = true/false
-getBot().rotation.anti_fire = true/false -- Not Implemented.
-getBot().rotation.anti_toxic = true/false -- Not Implemented.
-getBot().rotation.take_fossil = true/false -- Not Implemented.
-getBot().rotation.dynamic_delay = true/false
-getBot().rotation.auto_fill = true/false
-getBot().rotation.gem_limit = 2000
-getBot().rotation.world_limit = 9
-getBot().rotation.id = 4584
-getBot().rotation.pack = 0 -- Pack Index on menu
-getBot().rotation.seed_storage -- Read only Seed Storage to view.
-getBot().rotation.pack_storage -- Read only Pack Storage to view.
-getBot().rotation.farms -- Read only table of rotation worlds to view.
-getBot().rotation.index -- Read only index of the current rotation world.
-getBot().harvest_interval = 0.18
-getBot().break_interval = 0.20
-getBot().plant_interval = 0.17
-getBot().warp_interval = 12
+local rotation = getBot().rotation
+rotation.enabled = true
+rotation.visit_random_worlds = true
+rotation.dynamic_delay = true
+rotation.harvest_interval = 0.18
+rotation.break_interval = 0.20
+rotation.plant_interval = 0.17
+rotation.warp_interval = 12
 ```
 
 ## World Manager
@@ -54,12 +49,6 @@ App's global world manager.
 - `removeFarm(string name)` : Removes Farm World from list if it exists.
 - `addStorage(string name_and_id, StorageType type, number seed_id)` : Adds new storage world to the list. (If u want to add pack storage, keep seed as 0)
 - `removeStorage(string name, StorageType type)` : Removes Storage World from list if it exists.
-- `assign()` : Distributes everything to the bots.
-- `assignFarm()` : Distributes farm worlds to the bots.
-- `assignStorage()` : Distributes storage worlds to the bots.
-- `apply(Bot bot)` : Applies selected farms and storages to the bot.
-- `applyFarm(Bot bot)` : Applies selected farms to the bot.
-- `applyStorage(Bot bot)` : Applies selected storages to the bot.
 - `selectAll()` : Selects all farm and storage worlds.
 - `unselectAll()` : Unselects all farm and storage worlds.
 - `selectFarm(string name)` : Selects the farm world on the menu.
@@ -79,14 +68,6 @@ world_manager:addStorage("packstorage:123", StorageType.pack, 0)
 
 world_manager:removeStorage("packstorage", StorageType.pack)
 world_manager:removeStorage("seedstorage", StorageType.seed)
-
-world_manager:assign() -- Spreads all worlds automatically.
-world_manager:assignFarm() -- Spreads farm worlds automatically.
-world_manager:assignStorage() -- Spreads storage worlds automatically.
-
-world_manager:apply(getBot()); -- Will assign the selected worlds to specific bot.
-world_manager:applyFarm(getBot()) -- Will assign the selected farm worlds to specific bot.
-world_manager:applyStorage(getBot()) -- Will assign the selected storages to specific bot.
 
 world_manager:unselectAll()
 world_manager:selectAll()
