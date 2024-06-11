@@ -22,7 +22,7 @@ Rotation instance that stored on bot struct.
 - `pnb_in_home` : Rotation's PNB in Home Feature. (Boolean)
 - `harvest_until_level` : Rotation's Harvest until Level Feature. (Boolean)
 - `visit_random_worlds` : Rotation's Clear History Feature. (Boolean)
-  - `pnb_world` : Customizable PNB World. (String)
+- `pnb_world` : Customizable PNB World. (String)
 - `harvest_interval` : Bot's Harvest Interval. (float)
 - `plant_interval` : Bot's Plant Interval. (float)
 - `break_interval` : Bot's Break/Place Interval. (float)
