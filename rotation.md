@@ -2,6 +2,9 @@
 
 ## Rotation
 Rotation instance that stored on bot struct.
+```lua
+local rotation = getBot().rotation
+```
 
 #### Properties
 - `enabled` : Rotation active. (Boolean)
