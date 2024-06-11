@@ -17,6 +17,9 @@ An enumeration representing the different statuses a bot can have.
 * `maintenance` : the server is currently undergoing maintenance and is unavailable.
 * `server_busy` : the server is currently busy and cannot handle any more connections.
 * `guest_limit` : the maximum number of guests for the ip has been reached.
+* `guest_disabled` : guest accounts are currently disabled.
+* `account_restricted` : the account is restricted from growtopia.
+* `network_restricted` : maximum supported number of bots in network is reached.
 * `http_block` : the server is blocking HTTP connections from bot ip.
 * `bad_name_length` : the bot name is too short or too long.
 * `invalid_account` : the bot is invalid.
@@ -24,7 +27,13 @@ An enumeration representing the different statuses a bot can have.
 * `logon_fail` : the bot failed to log in.
 * `captcha_requested` : captcha requested by gt.
 * `mod_entered` : a mod entered bot's world.
+* `player_entered` : a player entered bot's world.
 * `high_load` : the bot's subserver is currently on high load.
+* `high_ping` : the bot's ping is currently is higher than maximum-ping.
+* `changing_subserver` : the bot's subserver is currently switching.
+* `stopped` : the bot's actions have been stopped by 'Auto-Stop'.
+* `getting_server_data` : bot is currently getting server data from gt-1 or gt-2.
+* `bypassing_server_data` : bot is currently bypassing server data with another proxy.
 
 #### Example Usage
 ```lua
@@ -183,6 +192,20 @@ An enumeration representing bubble type.
 ```lua
 bot = getBot()
 bot:setBubble(Bubble.talk)
+```
+
+## Platform
+
+An enumeration representing login platform.
+
+#### Values
+* `windows` : PLATFORM_WINDOWS.
+* `android` : PLATFORM_ANDROID.
+* `macos` : PLATFORM_MACOS.
+
+#### Example
+```lua
+addBot("name", "password", "", "", Platform.android) -- Adding bot with Android Platform.
 ```
 
 ## StorageType
