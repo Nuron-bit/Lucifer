@@ -35,7 +35,7 @@ An enumeration representing the different statuses a bot can have.
 * `getting_server_data` : bot is currently getting server data from gt-1 or gt-2.
 * `bypassing_server_data` : bot is currently bypassing server data with another proxy.
 
-#### Example Usage
+#### Example
 ```lua
 -- Get the current status of the bot
 local status = getBot().status
@@ -61,7 +61,7 @@ An enumeration representing the different status codes for a captcha.
 * `invalid_key` : the captcha could not be solved due to wrong captcha api key.
 * `invalid_token` : the captcha could not be solved due to corrupted website.
 
-#### Example Usage
+#### Example
 ```lua
 -- Check if a captcha has been solved
 local captchaStatus = getBot().captcha_status
