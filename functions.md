@@ -43,6 +43,7 @@ addBot("nuron") -- Adding guest account.
 addBot("nuron", "02:00:00:00:00:00", "rid_here") -- Adding guest account with device information.
 addBot("nuron", "nuron123") -- Adding normal account.
 addBot("nuron", "nuron123", "02:00:00:00:00:00", "RID") -- Adding normal account with device information.
+addBot("nuron", "", "", "", Platform.android) -- Adding guest account with platform information.
 addUbiBot("nuron@gmail.com", "gmail_password") -- Adding Ubi-Connect Account.
 addUbiBot("nuron@gmail.com", "gmail_password", "NewAccount123") -- Creating New Ubi-Connect Account.
 
