@@ -1,4 +1,4 @@
-# LUCIFER V1.8 - API DOCUMENTATION [FUNCTIONS]
+# LUCIFER V2.32 - API DOCUMENTATION [FUNCTIONS]
 
 * `sleep(ms: number)` : Sleeps script for certain milliseconds.
 #### Example
@@ -23,6 +23,7 @@ end
 
 * `read(path: string) -> string` : Reads from file and returns its content.
 * `write(path: string, content: string)` : Writes content to a file.
+* `append(path: string, content: string)` : Appends content to a file.
 #### Example
 ```lua
 write("nuron.txt", "Some Message")
@@ -32,6 +33,7 @@ print(read("nuron.txt"))
 * `addBot(name: string, password: string) -> Bot` :  Adds bot if it doesnt exist.
 * `addBot(name: string) -> Bot` :  Adds a guest bot if it doesnt exist.
 * `addBot(name: string, password: string, mac: string, rid: string) -> Bot` :  Adds bot if it doesnt exist.
+* `addBot(name: string, password: string, mac: string, rid: string, platform: Platform) -> Bot` :  Adds bot with Platform if it doesnt exist.
 * `addBot(name: string, mac: string, rid: string) -> Bot` :  Adds ubi-bot if it doesnt exist.
 * `addUbiBot(mail: string, password: string) -> Bot` :  Adds ubi-bot if it doesnt exist.
 * `addUbiBot(mail: string, password: string, username: string) -> Bot` :  Adds and registers ubi-bot if it doesnt exist.
@@ -126,6 +128,14 @@ removeEvents() -- You can also remove all events with this function.
 ```lua
  username = getUsername()
  print(string.format("Hello %s, thanks for using lucifer <3", username))
+```
+
+* `clearConsole()` : Clears Console Content. [ os.execute("cls") ]
+#### Example
+```lua
+print("message")
+sleep(3000)
+clearConsole()
 ```
 
 * `runThread(function, ...)` :  Runs a thread. You can use as many parameters as u need.
